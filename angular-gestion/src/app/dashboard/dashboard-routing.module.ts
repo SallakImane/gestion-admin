@@ -1,18 +1,12 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
-import {HomeComponent} from "./home/home.component";
-import {ContentComponent} from "../shared/layout/content/content.component";
+import {DashboardComponent} from "./dashboard.component";
 
-const routes: Routes = [{
-  path: '',
-  component: ContentComponent,
-  children: [
-    {path: '', component: HomeComponent}
-  ]
-}];
 
+const routes: Routes = [
+  { path: '', component: DashboardComponent }
+];
 @NgModule({
-  declarations: [],
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })

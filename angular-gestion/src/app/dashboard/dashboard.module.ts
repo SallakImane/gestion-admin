@@ -1,13 +1,15 @@
-import { NgModule } from '@angular/core';
-import { HomeComponent } from './home/home.component';
+import {NgModule} from '@angular/core';
 import {SharedModule} from "../shared/shared.module";
-
+import {DashboardRoutingModule} from "./dashboard-routing.module";
+import {DashboardComponent} from "./dashboard.component";
 
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [DashboardComponent],
   imports: [
-    SharedModule
-  ]
+    SharedModule,
+    DashboardRoutingModule
+  ],
 })
-export class DashboardModule { }
+export class DashboardModule {
+}

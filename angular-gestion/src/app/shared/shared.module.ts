@@ -4,23 +4,30 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { HeaderComponent } from './layout/header/header.component';
 import {RouterModule} from "@angular/router";
+import { AuthComponent } from './layout/auth/auth.component';
 
 
 
 @NgModule({
-  imports: [
-    CommonModule,RouterModule
-  ],
-  exports : [
-    FooterComponent,
-    SidebarComponent,
-    HeaderComponent
-  ],
   declarations: [
     FooterComponent,
     SidebarComponent,
-    HeaderComponent
+    HeaderComponent,
+    AuthComponent
   ],
+
+  imports: [
+    CommonModule,
+    RouterModule
+  ],
+
+  exports : [
+    FooterComponent,
+    SidebarComponent,
+    HeaderComponent,
+    AuthComponent
+  ],
+
 
 
 })

@@ -5,11 +5,12 @@ import {RouterModule, Routes} from "@angular/router";
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
-  { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule'},
-
+  { path: 'login', loadChildren: './authentification/authentification.module#AuthentificationModule'},
+  //{ path: 'home', loadChildren: './dashboard/dashboard.module#DashboardModule'},
+  { path: 'home', loadChildren: './dashboard/home/home.module#HomeModule'},
 
 ];
 

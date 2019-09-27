@@ -3,19 +3,14 @@ import {RouterModule, Routes} from "@angular/router";
 
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/login',
-    pathMatch: 'full'
-  },
-  { path: 'login', loadChildren: './authentification/authentification.module#AuthentificationModule'},
-  //{ path: 'home', loadChildren: './dashboard/dashboard.module#DashboardModule'},
-  { path: 'home', loadChildren: './dashboard/home/home.module#HomeModule'},
+  {path: '', redirectTo: 'auth', pathMatch: 'full'},
+  {path: 'auth', loadChildren: './authentification/authentification.module#AuthentificationModule'},
+  {path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule'},
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

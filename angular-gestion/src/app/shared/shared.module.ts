@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FooterComponent } from './layout/footer/footer.component';
-import { SidebarComponent } from './layout/sidebar/sidebar.component';
-import { HeaderComponent } from './layout/header/header.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FooterComponent} from './layout/footer/footer.component';
+import {SidebarComponent} from './layout/sidebar/sidebar.component';
+import {HeaderComponent} from './layout/header/header.component';
 import {RouterModule} from "@angular/router";
-import { AuthComponent } from './layout/auth/auth.component';
-
+import {AuthComponent} from './layout/auth/auth.component';
+import {DashboardComponent} from './layout/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { AuthComponent } from './layout/auth/auth.component';
     FooterComponent,
     SidebarComponent,
     HeaderComponent,
-    AuthComponent
+    AuthComponent,
+    DashboardComponent
   ],
 
   imports: [
@@ -21,14 +22,12 @@ import { AuthComponent } from './layout/auth/auth.component';
     RouterModule
   ],
 
-  exports : [
-    FooterComponent,
-    SidebarComponent,
-    HeaderComponent,
+  exports: [
+    DashboardComponent,
     AuthComponent
   ],
 
 
-
 })
-export class SharedModule { }
+export class SharedModule {
+}

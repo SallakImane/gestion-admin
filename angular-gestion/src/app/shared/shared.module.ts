@@ -6,6 +6,7 @@ import {HeaderComponent} from './layout/header/header.component';
 import {RouterModule} from "@angular/router";
 import {AuthComponent} from './layout/auth/auth.component';
 import {DashboardComponent} from './layout/dashboard/dashboard.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -18,13 +19,17 @@ import {DashboardComponent} from './layout/dashboard/dashboard.component';
   ],
 
   imports: [
-    CommonModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
 
   exports: [
     DashboardComponent,
-    AuthComponent
+    AuthComponent,
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
 
 

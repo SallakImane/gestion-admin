@@ -4,7 +4,7 @@
   <div class="col-lg-6">
     <div class="p-5">
       <div class="text-center">
-        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+        <h1 class="h4 text-gray-900 mb-4">Login</h1>
       </div>
       <form [formGroup]="loginForm" (ngSubmit)="signin()" class="user">
         <!--Input UserName-->
@@ -44,15 +44,12 @@
         <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary btn-user btn-block">
           Login
         </button>
-        <!--<a routerLink="/dashboard" class="btn btn-primary btn-user btn-block">-->
-          <!--Login-->
-        <!--</a>-->
         <hr>
         <div class="text-center">
-          <a class="small" href="forgot-password.html">Forgot Password?</a>
+          <a class="small" routerLink="/auth/forgot-password">Forgot Password?</a>
         </div>
         <div class="text-center">
-          <a class="small" href="register.html">Create an Account!</a>
+          <a class="small" routerLink="/auth/register">Create an Account!</a>
         </div>
       </form>
     </div>

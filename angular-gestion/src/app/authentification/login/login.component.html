@@ -7,17 +7,16 @@
         <h1 class="h4 text-gray-900 mb-4">Login</h1>
       </div>
       <form [formGroup]="loginForm" (ngSubmit)="signin()" class="user">
-        <!--Input UserName-->
+        <!--Input Email-->
         <div class="form-group">
-          <label>Username</label>
-
-          <input type="email"  formControlName="username" required
-                 [ngClass]="{'is-invalid': loginForm.get('username').invalid && loginForm.get('username').touched}"
+          <label>Email</label>
+          <input type="email"  formControlName="email" required
+                 [ngClass]="{'is-invalid': loginForm.get('email').invalid && loginForm.get('email').touched}"
                  class="form-control form-control-user" placeholder="Enter Email Address..."/>
 
-          <div *ngIf="loginForm.get('username').invalid && loginForm.get('username').touched" class="invalid-feedback">
-            <div *ngIf="loginForm.get('username').errors?.required">Username is required</div>
-            <div *ngIf="loginForm.get('username').errors?.email">Please enter a valid email address (ex:
+          <div *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched" class="invalid-feedback">
+            <div *ngIf="loginForm.get('email').errors?.required">Email is required</div>
+            <div *ngIf="loginForm.get('email').errors?.email">Please enter a valid email address (ex:
               your-email@domaine.com)</div>
           </div>
 

@@ -9,39 +9,59 @@
         <div class="form-group row">
           <!--Input First Name-->
           <div class="col-sm-6 mb-3 mb-sm-0">
-            <label>First Name</label>
-            <input type="text" class="form-control form-control-user" placeholder="First Name" required>
+            <input type="text" class="form-control form-control-user" placeholder="First Name" formControlName="firstName"
+                   [ngClass]="{'is-invalid': registerForm.get('firstName').invalid && registerForm.get('firstName').touched}" required>
+            <div *ngIf="registerForm.get('firstName').invalid && registerForm.get('firstName').touched" class="invalid-feedback">
+              <div *ngIf="registerForm.get('firstName').errors?.required">First Name is required</div>
+            </div>
           </div>
           <!--Input Last Name-->
           <div class="col-sm-6">
-            <label>Last Name</label>
-            <input type="text" class="form-control form-control-user" placeholder="Last Name" required>
+            <input type="text" class="form-control form-control-user" placeholder="Last Name" formControlName="lastName"
+                   [ngClass]="{'is-invalid': registerForm.get('lastName').invalid && registerForm.get('lastName').touched}" required>
+            <div *ngIf="registerForm.get('lastName').invalid && registerForm.get('lastName').touched" class="invalid-feedback">
+              <div *ngIf="registerForm.get('lastName').errors?.required">Last Name is required</div>
+            </div>
           </div>
         </div>
         <!--Input Email-->
         <div class="form-group">
-          <label>Email</label>
-          <input type="email" class="form-control form-control-user" placeholder="Email Address" required>
+          <input type="email" class="form-control form-control-user" placeholder="Email Address" formControlName="email"
+                 [ngClass]="{'is-invalid': registerForm.get('email').invalid && registerForm.get('email').touched}" required>
+          <div *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched" class="invalid-feedback">
+            <div *ngIf="registerForm.get('email').errors?.required">Email is required</div>
+            <div *ngIf="registerForm.get('email').errors?.email">Please enter a valid email address (ex:
+              your-email@domaine.com)</div>
+          </div>
         </div>
         <!--Input Phone-->
         <div class="form-group">
-          <label>Phone</label>
-          <input type="email" class="form-control form-control-user" placeholder="Email Address" required>
+          <input type="email" class="form-control form-control-user" placeholder="+212 685923721" formControlName="phone"
+                 [ngClass]="{'is-invalid': registerForm.get('phone').invalid && registerForm.get('phone').touched}" required>
+          <div *ngIf="registerForm.get('phone').invalid && registerForm.get('phone').touched" class="invalid-feedback">
+            <div *ngIf="registerForm.get('phone').errors?.required">Phone is required</div>
+          </div>
         </div>
         <!--Input Password-->
         <div class="form-group row">
           <div class="col-sm-6 mb-3 mb-sm-0">
-            <label>Password</label>
-            <input type="password" class="form-control form-control-user" placeholder="Password" required>
+            <input type="password" class="form-control form-control-user" placeholder="Password" formControlName="password"
+                   [ngClass]="{'is-invalid': registerForm.get('password').invalid && registerForm.get('password').touched}" required>
+            <div *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched" class="invalid-feedback">
+              <div *ngIf="registerForm.get('password').errors?.required">Password is required</div>
+            </div>
           </div>
           <div class="col-sm-6">
-            <label>Confirm Password</label>
-            <input type="password" class="form-control form-control-user" placeholder="Repeat Password" required>
+            <input type="password" class="form-control form-control-user" placeholder="Repeat Password" formControlName="confirmPassword"
+                   [ngClass]="{'is-invalid': registerForm.get('confirmPassword').invalid && registerForm.get('confirmPassword').touched}" required>
+            <div *ngIf="registerForm.get('confirmPassword').invalid && registerForm.get('confirmPassword').touched" class="invalid-feedback">
+              <div *ngIf="registerForm.get('confirmPassword').errors?.required">confirm Password is required</div>
+              <div *ngIf="registerForm.get('confirmPassword').errors?.mustMatch">Passwords must match</div>
+            </div>
           </div>
         </div>
-        <a href="login.html" class="btn btn-primary btn-user btn-block">
-          Register Account
-        </a>
+        <!--Button Register Form -->
+        <button type="submit" class="btn btn-primary btn-user btn-block mt-3" [disabled]="registerForm.invalid">Register Account</button>
       </form>
     </div>
   </div>

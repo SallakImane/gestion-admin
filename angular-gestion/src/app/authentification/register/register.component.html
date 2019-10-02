@@ -24,6 +24,16 @@
             </div>
           </div>
         </div>
+        <!--Input Phone-->
+        <div class="form-group">
+          <input type="email" class="form-control form-control-user" placeholder="+212 685923721" formControlName="phone"
+                 [ngClass]="{'is-invalid': registerForm.get('phone').invalid && registerForm.get('phone').touched}" required>
+          <div *ngIf="registerForm.get('phone').invalid && registerForm.get('phone').touched" class="invalid-feedback">
+            <div *ngIf="registerForm.get('phone').errors?.required">Phone is required</div>
+            <div *ngIf="registerForm.get('phone').errors?.minlength">Phone must be at least 10 characters</div>
+          </div>
+        </div>
+
         <!--Input Email-->
         <div class="form-group">
           <input type="email" class="form-control form-control-user" placeholder="Email Address" formControlName="email"
@@ -32,14 +42,6 @@
             <div *ngIf="registerForm.get('email').errors?.required">Email is required</div>
             <div *ngIf="registerForm.get('email').errors?.email">Please enter a valid email address (ex:
               your-email@domaine.com)</div>
-          </div>
-        </div>
-        <!--Input Phone-->
-        <div class="form-group">
-          <input type="email" class="form-control form-control-user" placeholder="+212 685923721" formControlName="phone"
-                 [ngClass]="{'is-invalid': registerForm.get('phone').invalid && registerForm.get('phone').touched}" required>
-          <div *ngIf="registerForm.get('phone').invalid && registerForm.get('phone').touched" class="invalid-feedback">
-            <div *ngIf="registerForm.get('phone').errors?.required">Phone is required</div>
           </div>
         </div>
         <!--Input Password-->

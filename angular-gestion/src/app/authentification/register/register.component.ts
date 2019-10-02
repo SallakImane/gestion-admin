@@ -5,7 +5,8 @@ import {MustMatch} from "./must-match.validator";
 import {AuthService} from "../../_services/auth/auth.service";
 import {first} from "rxjs/operators";
 import {Router} from "@angular/router";
-import {User} from "../../_models/User";
+import {GlobalResponse} from "../../_models/global-response.model";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-register',
@@ -14,6 +15,7 @@ import {User} from "../../_models/User";
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
+  globalResponse: GlobalResponse = null;
 
   constructor(private formBuilder: FormBuilder,private authService: AuthService,private router: Router) { }
 
@@ -34,14 +36,19 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.registerForm.value)
       .pipe(first())
       .subscribe(
-        data => {
-          //this.router.navigate(["/auth/login"]);
-          console.log(JSON.stringify(this.registerForm.value));
+        (res: GlobalResponse) => {
+          this.globalResponse = new GlobalResponse();
+          this.globalResponse = res;
+          this.registerForm.reset();
+          this.router.navigate(["/auth/login"]);
         },
-        error => {
-          console.log("error");
+        (error: HttpErrorResponse) => {
+          this.globalResponse = new GlobalResponse();
+          this.globalResponse.error = true;
+          this.globalResponse.status = 400;
+          this.globalResponse.message = "Please verify your email address and password";
+          this.globalResponse.errorType = "danger";
         }
-      )
-
+      );
   }
 }

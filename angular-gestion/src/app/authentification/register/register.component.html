@@ -6,6 +6,13 @@
         <h1 class="h4 text-gray-900 mb-4">Register</h1>
       </div>
       <form class="user" [formGroup]="registerForm" (ngSubmit)="register()">
+        <!--Alert error or/success-->
+        <div *ngIf="globalResponse" [class]="'alert alert-' + globalResponse.errorType">
+          <strong>
+            {{ globalResponse.error ? 'Error' : 'Success' }}
+          </strong>
+          - {{ globalResponse.message }}
+        </div>
         <div class="form-group row">
           <!--Input First Name-->
           <div class="col-sm-6 mb-3 mb-sm-0">
@@ -26,7 +33,7 @@
         </div>
         <!--Input Phone-->
         <div class="form-group">
-          <input type="email" class="form-control form-control-user" placeholder="+212 685923721" formControlName="phone"
+          <input type="text" class="form-control form-control-user" placeholder="+212 685923721" formControlName="phone"
                  [ngClass]="{'is-invalid': registerForm.get('phone').invalid && registerForm.get('phone').touched}" required>
           <div *ngIf="registerForm.get('phone').invalid && registerForm.get('phone').touched" class="invalid-feedback">
             <div *ngIf="registerForm.get('phone').errors?.required">Phone is required</div>

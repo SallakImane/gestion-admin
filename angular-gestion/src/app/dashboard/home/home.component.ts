@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DashboardService} from "../../_services/dashboard/dashboard.service";
+import {first} from "rxjs/operators";
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  users = [];
 
-  constructor() { }
+  constructor( private dashboardService :DashboardService) { }
 
   ngOnInit() {
+    this.loadAllUsers();
   }
 
+  private loadAllUsers() {
+    this.dashboardService.getAllUsers()
+      .pipe(first())
+      .subscribe(users => this.users = users);
+  }
 }

@@ -11,7 +11,7 @@ import java.util.Map;
 
 @Service
 @Slf4j
-public class AuthService implements IAuthService{
+public class AuthService implements IAuthService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 

@@ -13,7 +13,7 @@ import java.util.Map;
 @Slf4j
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value = "/auth")
+@RequestMapping(value = "/api")
 public class AuthController {
 
     private AuthService authService;
@@ -23,7 +23,7 @@ public class AuthController {
     }
 
     /*Method for Register User*/
-    @PostMapping(value = "/registerForm")
+    @PostMapping(value = "/auth/registerForm")
     public ResponseEntity<?> register(@RequestBody Map<String, String> post) {
         if (post != null) {
             try {

@@ -16,7 +16,7 @@ import java.util.List;
 @Slf4j
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value = "/dashboard")
+@RequestMapping(value = "/api")
 public class DashControllers {
     private final DashService dashService;
 
@@ -24,7 +24,7 @@ public class DashControllers {
         this.dashService = dashService;
     }
 
-    @GetMapping(value = "/users")
+    @GetMapping(value = "/dashboard/users")
     public ResponseEntity<?> getAllUsers() {
         try {
             List<User> res = dashService.getAllUsers();

@@ -85,7 +85,8 @@ I should have a @Configuration class that implements WebMvcConfigurer.
 		public class WebMvcConfig implements WebMvcConfigurer {
 	    @Override
 	    public void addViewControllers(ViewControllerRegistry registry) {
-	        registry.addViewController("/").setViewName("forward:/app/index.html");
+	    	 registry.addViewController("/").setViewName("redirect:app/index.html");
+	        //registry.addViewController("/").setViewName("forward:/app/index.html");
 	    }
 		}
 

@@ -9,7 +9,7 @@ import {User} from "../../_models/User";
 
 export class DashboardService {
 
-  baseUrl = environment.baseUrl;
+  baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 

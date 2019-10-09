@@ -128,5 +128,12 @@ I should have a @Configuration class that implements WebMvcConfigurer.
    
     	mvn tomcat7:deploy 
 
+
+## Part Tree : Authentification with `JWT` 
+
++ [**Spring Security with JWT**](https://dev.to/keysh/spring-security-with-jwt-3j76)
+
++ [**Proof of authentication with JWT**](https://blog.ippon.fr/2017/10/12/preuve-dauthentification-avec-jwt/)
+
 # Authors
  + [**Sallak Imane**](https://github.com/SallakImane)

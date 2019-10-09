@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {AuthService} from "../../_services/auth/auth.service";
+import {GlobalResponse} from "../../_models/global-response.model";
 
 @Component({
   selector: 'app-login',
@@ -9,9 +11,10 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  submitted :boolean =false;
+  globalResponse: GlobalResponse = new GlobalResponse();
 
-  constructor( private formBuilder: FormBuilder,private router: Router) { }
+
+  constructor(private formBuilder: FormBuilder,private authService: AuthService,private router: Router) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -19,15 +22,5 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
-
-  signin() {
-    this.submitted = true;
-    // stop here if form is invalid
-    if (this.loginForm.invalid) {
-      console.log("form Invalid");
-      return;
-    }
-    console.log("form " + JSON.stringify(this.loginForm.value));
-    this.router.navigate(['/dashboard']);
-  }
+  signin(){}
 }

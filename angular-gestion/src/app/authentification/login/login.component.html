@@ -7,6 +7,14 @@
         <h1 class="h4 text-gray-900 mb-4">Login</h1>
       </div>
       <form [formGroup]="loginForm" (ngSubmit)="signin()" class="user">
+        <!--Alert error or/success-->
+        <div *ngIf="globalResponse" [class]="'alert alert-' + globalResponse.errorType">
+          <strong>
+            {{ globalResponse.error ? 'Error' : 'Success' }}
+          </strong>
+          - {{ globalResponse.message }}
+        </div>
+
         <!--Input Email-->
         <div class="form-group">
           <label>Email</label>

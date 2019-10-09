@@ -129,7 +129,13 @@ I should have a @Configuration class that implements WebMvcConfigurer.
     	mvn tomcat7:deploy 
 
 
-## Part Tree : Authentification with `JWT` 
+## Part Tree : Authentification
+
+#### With `Spring Security Basic`
+
++ [**Spring Boot Basic Authentication**](https://medium.com/@rameez.s.shaikh/angular-7-spring-boot-basic-authentication-example-98455b73d033)
+
+#### With `JWT` 
 
 + [**Spring Security with JWT**](https://dev.to/keysh/spring-security-with-jwt-3j76)
 

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Data
@@ -32,4 +33,7 @@ public class User extends AbstractEntity {
 
     @Column(nullable = false)
     private String phone;
+
+    @ManyToOne
+    private Role role;
 }

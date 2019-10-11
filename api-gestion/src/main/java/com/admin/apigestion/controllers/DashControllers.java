@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @CrossOrigin(origins = "*")
@@ -40,5 +42,10 @@ public class DashControllers {
                             .build()
             );
         }
+    }
+
+    @GetMapping(path = "/whoami")
+    public ResponseEntity<?> index(Principal principal) {
+        return ResponseEntity.ok().body(Map.of("email", principal.getName()));
     }
 }

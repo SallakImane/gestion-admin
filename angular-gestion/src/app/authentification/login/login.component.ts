@@ -22,5 +22,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
-  signin(){}
+  signin(){
+    this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value)
+  }
 }

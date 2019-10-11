@@ -17,4 +17,6 @@ export class AuthService {
     return this.http.post<GlobalResponse>(
       this.baseUrl + "/auth/registerForm", user);
   }
+
+  login(email: string, password: string) {}
 }

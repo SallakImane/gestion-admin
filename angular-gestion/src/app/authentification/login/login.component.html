@@ -15,17 +15,17 @@
           - {{ globalResponse.message }}
         </div>
 
-        <!--Input Email-->
+        <!--Input username-->
         <div class="form-group">
-          <label>Email</label>
-          <input type="email"  formControlName="email" required
-                 [ngClass]="{'is-invalid': loginForm.get('email').invalid && loginForm.get('email').touched}"
-                 class="form-control form-control-user" placeholder="Enter Email Address..."/>
+          <label>username</label>
+          <input type="username"  formControlName="username" required
+                 [ngClass]="{'is-invalid': loginForm.get('username').invalid && loginForm.get('username').touched}"
+                 class="form-control form-control-user" placeholder="Enter username Address..."/>
 
-          <div *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched" class="invalid-feedback">
-            <div *ngIf="loginForm.get('email').errors?.required">Email is required</div>
-            <div *ngIf="loginForm.get('email').errors?.email">Please enter a valid email address (ex:
-              your-email@domaine.com)</div>
+          <div *ngIf="loginForm.get('username').invalid && loginForm.get('username').touched" class="invalid-feedback">
+            <div *ngIf="loginForm.get('username').errors?.required">username is required</div>
+            <div *ngIf="loginForm.get('username').errors?.email">Please enter a valid username address (ex:
+              your-username@domaine.com)</div>
           </div>
 
         </div>

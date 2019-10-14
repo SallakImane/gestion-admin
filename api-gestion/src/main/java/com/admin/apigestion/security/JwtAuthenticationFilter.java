@@ -36,7 +36,6 @@ public class JwtAuthenticationFilter  extends UsernamePasswordAuthenticationFilt
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
             var creds = new ObjectMapper().readValue(request.getInputStream(), LoginDto.class);
-            /*request.getInputStream() is used to get the body of the request*/
             var authenticationToken = new UsernamePasswordAuthenticationToken(creds.getUsername(), creds.getPassword());
             return authenticationManager.authenticate(authenticationToken);
         } catch (IOException e) {

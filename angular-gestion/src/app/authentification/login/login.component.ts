@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "../../_services/auth/auth.service";
 import {GlobalResponse} from "../../_models/global-response.model";
+import {first} from "rxjs/operators";
+import {User} from "../../_models/User";
 
 @Component({
   selector: 'app-login',
@@ -18,11 +20,28 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   }
   signin(){
-    this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value)
+    console.log(JSON.stringify(this.loginForm.value));
+    this.authService.login(this.loginForm.get('username').value, this.loginForm.get('password').value)
+      .pipe(first())
+      .subscribe((data: User) => {
+          if (data.token.rol.includes('ROLE_USER')) {
+            this.router.navigate(['/dashboard/home']);
+          }
+        },
+        error => {
+          if (error.status === 401) {
+            this.globalResponse = new GlobalResponse();
+            this.globalResponse.error = true;
+            this.globalResponse.status = 400;
+            this.loginForm.reset();
+            this.globalResponse.message = "Email ou mot de password incorrect";
+            this.globalResponse.errorType = "danger";
+          }
+        });
   }
 }

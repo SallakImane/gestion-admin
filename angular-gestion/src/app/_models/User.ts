@@ -1,9 +1,5 @@
-export class User {
-  firstName : string;
-  lastName : string;
-  email : string;
-  phone : string;
-  password : string;
-  //token: string;
+import {Token} from './token';
 
+export class User {
+  token?: Token;
 }

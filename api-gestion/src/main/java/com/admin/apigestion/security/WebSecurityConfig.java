@@ -1,5 +1,6 @@
 package com.admin.apigestion.security;
 
+import com.admin.apigestion.constant.SecurityConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
@@ -18,9 +19,13 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final SecurityConstants securityConstants;
     private final CustomUserDetailsService userDetailsService;
 
-    public WebSecurityConfig(CustomUserDetailsService userDetailsService) {
+    public WebSecurityConfig(SecurityConstants securityConstants,
+                             CustomUserDetailsService userDetailsService) {
+        this.securityConstants = securityConstants;
         this.userDetailsService = userDetailsService;
     }
 
@@ -34,8 +39,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/dashboard/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .httpBasic()
-                .and()
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(), securityConstants))
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), securityConstants))
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }

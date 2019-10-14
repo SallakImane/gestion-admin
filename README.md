@@ -141,5 +141,11 @@ I should have a @Configuration class that implements WebMvcConfigurer.
 
 + [**Proof of authentication with JWT**](https://blog.ippon.fr/2017/10/12/preuve-dauthentification-avec-jwt/)
 
++ [**JSON Web Tokens**](https://jwt.io)
+
+###### With `Postman` 
+
++ [**How to send JSON Web Token (JWT Token) as header with Postman**](https://www.youtube.com/watch?v=SKswJH7_plQ)
+
 # Authors
  + [**Sallak Imane**](https://github.com/SallakImane)

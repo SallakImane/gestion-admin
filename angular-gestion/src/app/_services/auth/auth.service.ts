@@ -22,9 +22,13 @@ export class AuthService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
+  public get currentUserValue(): User {
+    return this.currentUserSubject.value;
+  }
+
   register(user: User) {
     return this.http.post<GlobalResponse>(
-      this.baseUrl + "/auth/registerForm", user);
+      this.baseUrl + "/public/auth/registerForm", user);
   }
 
   login(username: string, password: string) {
@@ -35,7 +39,9 @@ export class AuthService {
         const user: User = {token: claims};
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
+        console.log(localStorage);
         this.currentUserSubject.next(user);
+        console.log(user);
         return user;
       }));
   }

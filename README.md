@@ -133,6 +133,8 @@ I should have a @Configuration class that implements WebMvcConfigurer.
 
 #### With `Spring Security Basic`
 
++ [**My Project Spring basic Authentification**](https://github.com/SallakImane/spring-basic-auth)
+
 + [**Spring Boot Basic Authentication**](https://medium.com/@rameez.s.shaikh/angular-7-spring-boot-basic-authentication-example-98455b73d033)
 
 #### With `JWT` 
@@ -143,9 +145,20 @@ I should have a @Configuration class that implements WebMvcConfigurer.
 
 + [**JSON Web Tokens**](https://jwt.io)
 
++ [**Putting RxJS into practice in Angular**](https://makina-corpus.com/blog/metier/2017/premiers-pas-avec-rxjs-dans-angular)
+
 ###### With `Postman` 
 
 + [**How to send JSON Web Token (JWT Token) as header with Postman**](https://www.youtube.com/watch?v=SKswJH7_plQ)
 
+## Part Tree : Send header authorization with token for each request `(Create an Interceptor )`
+
+The goal is to include the JWT which is in local storage as the `Authorization` header in any HTTP request that is sent. The first step is to create an interceptor. To do this, create an `Injectable` class which implements 
+
+`HttpInterceptor`.
+
++ [**Angular Authentication: Using the Http Client and Http Interceptors**](https://medium.com/@ryanchenkie_40935/angular-authentication-using-the-http-client-and-http-interceptors-2f9d1540eb8)
+
 # Authors
+
  + [**Sallak Imane**](https://github.com/SallakImane)

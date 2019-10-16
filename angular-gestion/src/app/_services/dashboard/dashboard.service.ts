@@ -15,6 +15,6 @@ export class DashboardService {
 
   getAllUsers() {
     return this.http.get<User[]>(
-      this.baseUrl + "/dashboard/users");
+      this.baseUrl + "/secured/dashboard/users");
   }
 }

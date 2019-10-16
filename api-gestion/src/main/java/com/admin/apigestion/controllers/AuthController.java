@@ -8,12 +8,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Map;
 
 @Slf4j
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping(path = "/api/public")
 public class AuthController {
 
     private AuthService authService;
@@ -22,6 +23,11 @@ public class AuthController {
         this.authService = authService;
     }
 
+
+    @GetMapping(path = "/whoami")
+    public ResponseEntity<?> privateHome(Principal principal) {
+        return ResponseEntity.ok().body(Map.of("whoami", "anonym"));
+    }
     /*Method for Register User*/
     @PostMapping(value = "/auth/registerForm")
     public ResponseEntity<?> register(@RequestBody Map<String, String> post) {

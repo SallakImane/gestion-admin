@@ -18,7 +18,7 @@ import java.util.Map;
 @Slf4j
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping(value = "/api/secured")
 public class DashControllers {
     private final DashService dashService;
 

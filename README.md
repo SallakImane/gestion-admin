@@ -129,7 +129,7 @@ I should have a @Configuration class that implements WebMvcConfigurer.
     	mvn tomcat7:deploy 
 
 
-## Part Tree : Authentification
+## Part three : Authentification
 
 #### With `Spring Security Basic`
 
@@ -151,7 +151,7 @@ I should have a @Configuration class that implements WebMvcConfigurer.
 
 + [**How to send JSON Web Token (JWT Token) as header with Postman**](https://www.youtube.com/watch?v=SKswJH7_plQ)
 
-## Part Tree : Send header authorization with token for each request `(Create an Interceptor )`
+## Part foor : Send header authorization with token for each request `(Create an Interceptor )`
 
 The goal is to include the JWT which is in local storage as the `Authorization` header in any HTTP request that is sent. The first step is to create an interceptor. To do this, create an `Injectable` class which implements 
 

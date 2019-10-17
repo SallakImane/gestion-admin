@@ -8,11 +8,8 @@
       </div>
       <form [formGroup]="loginForm" (ngSubmit)="signin()" class="user">
         <!--Alert error or/success-->
-        <div *ngIf="globalResponse" [class]="'alert alert-' + globalResponse.errorType">
-          <strong>
-            {{ globalResponse.error ? 'Error' : 'Success' }}
-          </strong>
-          - {{ globalResponse.message }}
+        <div *ngIf="globalResponse.status === 401" class="alert alert-danger" role="alert">
+          {{globalResponse.message}}
         </div>
 
         <!--Input username-->

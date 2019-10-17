@@ -41,7 +41,7 @@ public class AuthService implements IAuthService {
                 .phone(map.get("phone"))
                 .role(role)
                 .build();
-        newUser.setStatus(0);
+        newUser.setStatus(1);
         newUser =userRepository.save(newUser);
         return newUser;
     }

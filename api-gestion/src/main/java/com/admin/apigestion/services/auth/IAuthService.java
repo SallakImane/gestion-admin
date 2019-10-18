@@ -7,5 +7,7 @@ public interface IAuthService {
 
     void forgotPassword(String username) throws Exception;
 
+    void changePassword(String token, String newPassword) throws Exception;
+
 
 }

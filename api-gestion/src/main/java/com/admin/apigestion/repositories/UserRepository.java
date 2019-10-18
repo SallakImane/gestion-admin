@@ -14,4 +14,5 @@ public interface UserRepository extends JpaRepository<User,Long> {
     @Query("select u FROM User u WHERE u.status = 1")
     List<User> getAllUserByStatus();
 
+    Optional<User> findByResetPasswordToken(String token);
 }

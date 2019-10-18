@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -33,6 +34,12 @@ public class User extends AbstractEntity {
 
     @Column(nullable = false)
     private String phone;
+    @JsonIgnore
+    private String resetPasswordToken;
+    @JsonIgnore
+    private LocalDateTime resetPasswordSentDate;
+    @JsonIgnore
+    private LocalDateTime passwordChangedDate;
 
     @ManyToOne
     private Role role;

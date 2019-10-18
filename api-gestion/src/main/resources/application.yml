@@ -31,14 +31,35 @@ jwt:
   token_issuer: api-gestion
   token_audience: api-gestion
 
+#  mailgun:
+#    api: https://api.mailgun.net/v3
+#    endpoint: /messages
+#    authorisation:
+#      key: 01bcf492bfca6f901b0e24f63f96be97-9c988ee3-56cd8e32
+#    domain: /sandboxaaf39d440e8c42d486d0fe1d99c56624.mailgun.org
+#    connectTimeout: 3000
+#    socketTimeout: 1000
+
 mailgun:
     api: https://api.mailgun.net/v3
     endpoint: /messages
     authorisation:
-      key: 01bcf492bfca6f901b0e24f63f96be97-9c988ee3-56cd8e32
-    domain: /sandboxaaf39d440e8c42d486d0fe1d99c56624.mailgun.org
+      key: 48a73abf45135835317501ed66a43c6a-9b463597-f2a0bf4b
+    domain: /fatca.findl.lu
     connectTimeout: 3000
     socketTimeout: 10000
 
+#  mailgun:
+#    api: https://api.mailgun.net/v3
+#    endpoint: /messages
+#    authorisation:
+#      key: 48a73abf45135835317501ed66a43c6a-9b463597-f2a0bf4b
+#    domain: /fatca.findl.lu
+#    connectTimeout: 3000
+#    socketTimeout: 10000
+
 #angular:
 #    url: http://localhost:8081/gestion-admin/app
+
+angular:
+    url: http://localhost:4200

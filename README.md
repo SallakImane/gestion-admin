@@ -175,7 +175,7 @@ After Integrate in pom.xml dependency `unirest-java`.
 
 + [**Set Timeouts with Unirest for Java**](https://howtoprogram.xyz/2017/01/01/set-timeouts-unirest-java/)
 
-then create Playload Response to confirm whether the email is sent or not , example if testing sendTestMail() inside service MailService with @Test you have as response `{"status":200,"message":"OK"}` in console .
+Then create Playload Response to confirm whether the email is sent or not , example if testing sendTestMail() inside service MailService with @Test you have as response `{"status":200,"message":"OK"}` in console .
 
 Finally mailGun EmailService Custom Implementation, and class EmailDTO.
 

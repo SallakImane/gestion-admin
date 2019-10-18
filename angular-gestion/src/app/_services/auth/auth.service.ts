@@ -54,8 +54,15 @@ export class AuthService {
 
   forgotPassword(username: string) {
     return this.http.post<GlobalResponse>(
-      "/public/auth/forgotPassword",
-      {"username" :username}
+      this.baseUrl + "/public/auth/forgotPassword",
+      {"username": username}
+    );
+  }
+
+  changePassword(token: string, newPassword: string) {
+    return this.http.post<GlobalResponse>(
+      this.baseUrl + "/public/auth/changePassword",
+      {"token": token, "new-password": newPassword}
     );
   }
 }

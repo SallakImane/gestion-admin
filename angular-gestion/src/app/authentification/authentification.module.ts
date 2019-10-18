@@ -4,6 +4,7 @@ import {RegisterComponent} from "./register/register.component";
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
 import {SharedModule} from "../shared/shared.module";
 import {AuthentificationRoutingModule} from "./authentification-routing.module";
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
@@ -12,6 +13,7 @@ import {AuthentificationRoutingModule} from "./authentification-routing.module";
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     SharedModule,

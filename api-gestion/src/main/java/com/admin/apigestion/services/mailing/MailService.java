@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class MailService implements IMail {
 
-//    @Value("${angular.url}")
-//    private String angularUrl;
+    @Value("${angular.url}")
+    private String angularUrl;
     @Value("${mailgun.api}")
     private String api;
     @Value("${mailgun.endpoint}")
@@ -34,7 +34,7 @@ public class MailService implements IMail {
     @Override
     public void sendTestMail() {
         sendMail(EmailDTO.builder()
-                .from("YourFatca <info@fatca.findl.lu>")
+                .from("YourFatca <info@GestionAdmin.findl.lu>")
                 .to(ImmutableList.of("sallakimane9@gmail.com"))
                 .subject("Email Confirmation")
                 .body("<html>Hi there ! <br /><br />" +
@@ -46,6 +46,40 @@ public class MailService implements IMail {
 
                 .build());
 
+    }
+
+    @Override
+    public void sendResetPasswordMail(String email, String token) {
+        String content = "<html>Hi there ! <br /><br />" +
+                "Please follow the link bellow to update your password : <br /><br />" +
+                "<a style='background-color: #4CAF50; border: none;color: white;padding: 15px 32px;" +
+                "text-align: center;text-decoration: none;display: inline-block;font-size: 16px;border-radius: 12px;" +
+                "' href='" + angularUrl + "/auth/change-password?token=" + token + "'>Reset Password</a> <br /> <br />" +
+                "GestionAdmin Team<br />" +
+                "gestion@admin.findl.lu </html>";
+
+        sendMail(EmailDTO.builder()
+                .from("YourFatca Team <security@GestionAdmin.findl.lu>")
+                .to(ImmutableList.of(email))
+                .subject("Change password")
+                .body(content)
+                .build());
+    }
+
+    @Override
+    public void sendPasswordChangedNotification(String email) {
+        String content = "<html>Hi there ! <br /><br />" +
+                "Your new GestionAdmin password has been set.<br />" +
+                "You can now access you Account using the new password.<br /><br />" +
+                "GestionAdmin Team<br />" +
+                "gestion@admin.findl.lu </html>";
+
+        sendMail(EmailDTO.builder()
+                .from("GestionAdmin Team <security@GestionAdmin.findl.lu>")
+                .to(ImmutableList.of(email))
+                .subject("Your Password has been reset")
+                .body(content)
+                .build());
     }
 
     private void sendMail(EmailDTO email) {

@@ -57,4 +57,32 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
+    /*Method for Forgot Password*/
+    @PostMapping(value = "/auth/forgotPassword")
+    public ResponseEntity<?> forgotPassword(@RequestBody Map<String, String> post){
+        if (post.get("username") != null) {
+            try {
+                authService.forgotPassword(post.get("username"));
+                return ResponseEntity.status(HttpStatus.OK).body(
+                        CustomResponse.builder()
+                                .status(HttpStatus.OK.value())
+                                .error(false)
+                                .errorType("success")
+                                .message("We have sent a password reset link to your username address.")
+                                .build()
+                );
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.OK).body(
+                        CustomResponse.builder()
+                                .status(HttpStatus.OK.value())
+                                .error(true)
+                                .errorType("danger")
+                                .message(e.getMessage())
+                                .build()
+                );
+            }
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
 }

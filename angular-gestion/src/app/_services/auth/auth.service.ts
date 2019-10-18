@@ -51,4 +51,11 @@ export class AuthService {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }
+
+  forgotPassword(username: string) {
+    return this.http.post<GlobalResponse>(
+      "/public/auth/forgotPassword",
+      {"username" :username}
+    );
+  }
 }

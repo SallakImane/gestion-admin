@@ -30,3 +30,15 @@ jwt:
   token_type: JWT
   token_issuer: api-gestion
   token_audience: api-gestion
+
+mailgun:
+    api: https://api.mailgun.net/v3
+    endpoint: /messages
+    authorisation:
+      key: 01bcf492bfca6f901b0e24f63f96be97-9c988ee3-56cd8e32
+    domain: /sandboxaaf39d440e8c42d486d0fe1d99c56624.mailgun.org
+    connectTimeout: 3000
+    socketTimeout: 10000
+
+#angular:
+#    url: http://localhost:8081/gestion-admin/app

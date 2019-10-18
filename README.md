@@ -159,6 +159,24 @@ The goal is to include the JWT which is in local storage as the `Authorization` 
 
 + [**Angular Authentication: Using the Http Client and Http Interceptors**](https://medium.com/@ryanchenkie_40935/angular-authentication-using-the-http-client-and-http-interceptors-2f9d1540eb8)
 
+## Part Five : Integrate `MailGun` with Spring 
+
+First step, you must create an account in mailgun to retrieve the (key domain ....), after insert the code into the application.yml file.You can get the details from MailGun Dashboard.
+
++ [**Mailgun Setup**](https://documentation.onesignal.com/docs/mailgun-setup)
+
+After Integrate in pom.xml dependency `unirest-java`.
+
++ [**Unirest-Java**](http://kong.github.io/unirest-java/#requests)
+
++ [**Set Timeouts with Unirest for Java**](https://howtoprogram.xyz/2017/01/01/set-timeouts-unirest-java/)
+
+then create Playload Response to confirm whether the email is sent or not , example if testing sendTestMail() inside service MailService with @Test you have as response `{"status":200,"message":"OK"}` in console .
+
+Finally mailGun EmailService Custom Implementation, and class EmailDTO.
+
++ [**Integrate MailGun with Spring Boot and Java App**](https://vitalflux.com/integrate-mailgun-spring-boot-java-app/)
+
 # Authors
 
  + [**Sallak Imane**](https://github.com/SallakImane)

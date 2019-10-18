@@ -45,4 +45,13 @@ public class AuthService implements IAuthService {
         newUser =userRepository.save(newUser);
         return newUser;
     }
+
+    @Override
+    public void forgotPassword(String username) throws Exception {
+        Optional<User> optionalUser = userRepository.findByEmail(username);
+        if(optionalUser.isPresent()){
+
+        }
+
+    }
 }

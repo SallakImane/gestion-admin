@@ -29,8 +29,6 @@ public class MailService implements IMail {
     @Value("${mailgun.socketTimeout}")
     private long socketTimeout;
 
-
-
     @Override
     public void sendTestMail() {
         sendMail(EmailDTO.builder()

@@ -181,6 +181,16 @@ Finally mailGun EmailService Custom Implementation, and class EmailDTO.
 
 + [**Integrate MailGun with Spring Boot and Java App**](https://vitalflux.com/integrate-mailgun-spring-boot-java-app/)
 
+## Part Seven : Continuous Integration `Jenkins `
+
++ [**Jenkins**](https://www.guru99.com/download-install-jenkins.html)
+
++ [**How to trigger a Jenkins build process by a GitHub push**](https://learning-continuous-deployment.github.io/jenkins/github/2015/04/17/github-jenkins/)
+
++ [**Triggering a Jenkins build from a push to Github**](https://medium.com/@marc_best/trigger-a-jenkins-build-from-a-github-push-b922468ef1ae)
+
++ [**Jenkins Pipeline**](https://www.guru99.com/jenkins-pipeline-tutorial.html)
+
 # Authors
 
  + [**Sallak Imane**](https://github.com/SallakImane)

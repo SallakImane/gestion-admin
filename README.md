@@ -193,9 +193,25 @@ Finally mailGun EmailService Custom Implementation, and class EmailDTO.
 
 #### `DNS dynamique(DynDNS) `
 
-+ [**DNS dynamique(DynDNS): simplified remote access**](https://www.ionos.fr/digitalguide/serveur/know-how/quest-ce-que-le-ddns-dns-dynamique/)
+		How to remote access your device: 
+     	Step 1 - Create a Hostname.
+		Step 2 - Download the Dynamic Update Client (DUC).
+		The DUC keeps your hostname updated with your current IP address.
+		Step 3 - Port Forward your router.
+
+When I need to add a service to call the Jenkins Github webhook on a push, I need the URL of my Jenkins instance followed by /github-webhook/, so [**Getting Started with Dynamic DNS**](https://www.noip.com/confirm?a=97akpDT8zkMyE&utm_campaign=account-confirm&utm_medium=notice&utm_source=email).
+
+Step 1 Create a Hostname (no-ip)
 
 + [**Free Dynamic DNS : Getting Started Guide**](https://www.noip.com/support/knowledgebase/getting-started-with-no-ip-com/) 
+
+Step 3 Port Forward your router 
+
++ [**How to Forward Ports in a Huawei HG8245H Router**](https://portforward.com/huawei/hg8245h/)
+
+Finally test if a port is open or closed
+
++ [**CanYouSeeMe.org**](https://www.canyouseeme.org)
 
 # Authors
 

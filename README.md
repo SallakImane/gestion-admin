@@ -191,6 +191,16 @@ Finally mailGun EmailService Custom Implementation, and class EmailDTO.
 
 + [**Jenkins Pipeline**](https://www.guru99.com/jenkins-pipeline-tutorial.html)
 
+ In part `BUILD` to configue project (`Execute Windows batch command`), must add this command :
+
+		cd angular-gestion
+		call npm install
+		call npm run build:prod
+		cd ../api-gestion/
+		mvn tomcat7:deploy 
+
+`Remarque` : That npm is a batch file, not an executable, so it needs to be invoked using call from the Jenkins script.
+
 #### `DNS dynamique(DynDNS) `
 
 		How to remote access your device: 
@@ -212,6 +222,10 @@ Step 3 Port Forward your router
 Finally test if a port is open or closed
 
 + [**CanYouSeeMe.org**](https://www.canyouseeme.org)
+
+##  `README.md `
+
++ [**Write test in the folder README.md**](https://dillinger.io)
 
 # Authors
 

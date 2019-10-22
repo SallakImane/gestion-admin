@@ -191,6 +191,12 @@ Finally mailGun EmailService Custom Implementation, and class EmailDTO.
 
 + [**Jenkins Pipeline**](https://www.guru99.com/jenkins-pipeline-tutorial.html)
 
+#### `DNS dynamique(DynDNS) `
+
++ [**DNS dynamique(DynDNS): simplified remote access**](https://www.ionos.fr/digitalguide/serveur/know-how/quest-ce-que-le-ddns-dns-dynamique/)
+
+[**Free Dynamic DNS : Getting Started Guide**](https://www.noip.com/support/knowledgebase/getting-started-with-no-ip-com/)
+
 # Authors
 
  + [**Sallak Imane**](https://github.com/SallakImane)

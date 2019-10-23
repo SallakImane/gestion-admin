@@ -223,6 +223,25 @@ Finally test if a port is open or closed
 
 + [**CanYouSeeMe.org**](https://www.canyouseeme.org)
 
+## Part Eight : Install `Linux` in a `virtual machine` 
+
+		Step 1: Install virtual machine VmWare.
+		Step 2: Install Ubuntu server.
+		Step 3: Configure Reseau in Ubunto : Click right -> configuration->reseau-> select Acces par port ->select Intel(R) Ethernet Connetion I217-LM.
+		Step 4 : After connect to ubuntu with my login and my password , type these commands to find out ip adress and MAC Address .
+		        For ip Address : ifconfig
+		        For MAC Address : cat /sys/class/net/enp0s3/address
+		Step 4 : Reserve the IP address in a Huawei HG8245H Router, so after connected click LAN->DHCP static ip configuration , and enter ip Address and Mac Address.
+		Step 5 : Finally, to access ubuntu server according to my post you can connect as root with cmd, using the following command : `ssh root@your_server_ip`.
+
++ [**Open Class Room Install VmWare and linux**](https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux/37630-installez-linux-dans-une-machine-virtuelle)
+
++ [**Install Ubuntu server**](https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-server#2)
+
++ [**How to reset your password in Ubuntu**](https://www.psychocats.net/ubuntu/resetpassword)
+
++ [**Initial server configuration with Ubuntu 18.04**](https://www.digitalocean.com/community/tutorials/configuration-initiale-de-serveur-avec-ubuntu-18-04-fr)
+
 ##  `README.md `
 
 + [**Write test in the folder README.md**](https://dillinger.io)

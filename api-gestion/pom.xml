@@ -112,7 +112,7 @@
                 <version>2.2</version>
 
                 <configuration>
-                    <url>http://localhost:8081/manager/text</url>
+                    <url>http://192.168.100.20:8080/manager/text</url>
                     <server>tomcat</server>
                     <path>/gestion-admin</path>
                 </configuration>

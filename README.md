@@ -207,7 +207,8 @@ Finally mailGun EmailService Custom Implementation, and class EmailDTO.
      	Step 1 - Create a Hostname.
 		Step 2 - Download the Dynamic Update Client (DUC).
 		The DUC keeps your hostname updated with your current IP address.
-		Step 3 - Port Forward your router.
+		Step 3 - Port `Forward` your router (Public adress IP according to link what is myIPAdress).
+		Step 4 - `Reserve` the IP address in a Huawei HG8245H Router (Private adress IP according to cmd : ipconfig).
 
 When I need to add a service to call the Jenkins Github webhook on a push, I need the URL of my Jenkins instance followed by /github-webhook/, so [**Getting Started with Dynamic DNS**](https://www.noip.com/confirm?a=97akpDT8zkMyE&utm_campaign=account-confirm&utm_medium=notice&utm_source=email).
 
@@ -215,9 +216,15 @@ Step 1 Create a Hostname (no-ip)
 
 + [**Free Dynamic DNS : Getting Started Guide**](https://www.noip.com/support/knowledgebase/getting-started-with-no-ip-com/) 
 
-Step 3 Port Forward your router 
+Step 3 Port `Forward` your router 
 
 + [**How to Forward Ports in a Huawei HG8245H Router**](https://portforward.com/huawei/hg8245h/)
+
+Step 4 `Reserve` the IP address in a Huawei HG8245H Router
+
+steps : (ouvrir les parametres reseau et internet ->Ethernet ->Modifier les options d'adaptateur ->choisir ton reseau apres clic droit ->propriètè -> protocole Internet version 4 (TCP/IPv4) -> remplir les champs de utiliser l'adresse 
+
+ip suivante et utiliser l'adresse de serveur DNS),so after connected in Huawei HG8245H Router click LAN->DHCP static ip configuration , and enter ip Address and Mac Address.
 
 Finally test if a port is open or closed
 
@@ -241,6 +248,23 @@ Finally test if a port is open or closed
 + [**How to reset your password in Ubuntu**](https://www.psychocats.net/ubuntu/resetpassword)
 
 + [**Initial server configuration with Ubuntu 18.04**](https://www.digitalocean.com/community/tutorials/configuration-initiale-de-serveur-avec-ubuntu-18-04-fr)
+
+`SSH`, or secure shell, is an encrypted protocol used to administer and communicate with servers. When working with an Ubuntu server, chances are you will spend most of your time in a terminal session connected to your server through 
+SSH.
+
++ [**How to Set Up SSH Keys on Ubuntu 18.04**](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1804)
+
+## Part Nine : Install `MySql server` , `Jenkins` and `Tomcat`  on Ubuntu
+
++ [**Install `MySql server`**](https://www.digitalocean.com/community/tutorials/comment-installer-mysql-sur-ubuntu-18-04-fr)
+
++ [**Create db in `MySql server`**](https://www.digitalocean.com/community/tutorials/a-basic-mysql-tutorial)
+
++ [**Configure MySQL to listen in our public IP**](https://www.copahost.com/blog/grant-mysql-remote-access/)
+
++ [**Install `Tomcat`**](https://www.digitalocean.com/community/tutorials/install-tomcat-9-ubuntu-1804)
+
++ [**Install `Jenkins`**](https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-18-04)
 
 ##  `README.md `
 

@@ -197,7 +197,7 @@ Finally mailGun EmailService Custom Implementation, and class EmailDTO.
 		call npm install
 		call npm run build:prod
 		cd ../api-gestion/
-		mvn tomcat7:deploy 
+		mvn tomcat7:redeploy  
 
 `Remarque` : That npm is a batch file, not an executable, so it needs to be invoked using call from the Jenkins script.
 

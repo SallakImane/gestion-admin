@@ -214,7 +214,15 @@ When I need to add a service to call the Jenkins Github webhook on a push, I nee
 
 Step 1 Create a Hostname (no-ip)
 
-+ [**Free Dynamic DNS : Getting Started Guide**](https://www.noip.com/support/knowledgebase/getting-started-with-no-ip-com/) 
++ [**Free Dynamic DNS : Getting Started Guide**](https://www.noip.com/support/knowledgebase/getting-started-with-no-ip-com/)
+
+Step 2 - Download the Dynamic Update Client (DUC).
+
+On Windows :
++ [**Installing the Windows 4.x Dynamic Update Client (DUC)**](http://www.noip.com/support/knowledgebase/installing-the-windows-4-x-dynamic-update-client-duc/)
+
+On Ubuntu :
++ [**No-IP Dynamic Update Client on Ubuntu**](https://dotmycom.com/no-ip-dynamic-update-client-on-ubuntu/)
 
 Step 3 Port `Forward` your router 
 

@@ -274,7 +274,7 @@ SSH.
 
 + [**Install `Jenkins`**](https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-18-04)
 
-+ [**Install `node.js`**](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04)
++ [**Install `node.js`**](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04) :Installing Using a PPA
 
 + [**Install `Apache Maven`**](https://linuxize.com/post/how-to-install-apache-maven-on-ubuntu-18-04/)
 

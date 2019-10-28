@@ -262,7 +262,7 @@ SSH.
 
 + [**How to Set Up SSH Keys on Ubuntu 18.04**](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1804)
 
-## Part Nine : Install `MySql server` , `Jenkins` and `Tomcat`  on Ubuntu
+## Part Nine : Install `MySql server` , `Jenkins` ,`Tomcat`,`node.js` and `Apache Maven` on Ubuntu
 
 + [**Install `MySql server`**](https://www.digitalocean.com/community/tutorials/comment-installer-mysql-sur-ubuntu-18-04-fr)
 
@@ -273,6 +273,10 @@ SSH.
 + [**Install `Tomcat`**](https://www.digitalocean.com/community/tutorials/install-tomcat-9-ubuntu-1804)
 
 + [**Install `Jenkins`**](https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-18-04)
+
++ [**Install `node.js`**](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04)
+
++ [**Install `Apache Maven`**](https://linuxize.com/post/how-to-install-apache-maven-on-ubuntu-18-04/)
 
 ##  `README.md `
 

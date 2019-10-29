@@ -1,5 +1,7 @@
 package com.admin.apigestion;
 
+import com.admin.apigestion.entities.Role;
+import com.admin.apigestion.repositories.RoleRepository;
 import com.admin.apigestion.services.mailing.MailService;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
@@ -17,6 +19,9 @@ public class ApiGestionApplicationTests {
 
 	@Autowired
 	private MailService mailService;
+	@Autowired
+	private RoleRepository roleRepository;
+
 	@Test
 	public void contextLoads() {
 
@@ -40,4 +45,12 @@ public class ApiGestionApplicationTests {
 		mailService.sendTestMail();
 	}
 
+	@Test
+	public void addRole() {
+		Role newRole = Role.builder()
+				.name("ROLE_USER")
+				.build();
+		newRole.setStatus(1);
+		newRole =roleRepository.save(newRole);
+	}
 }

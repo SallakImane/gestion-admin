@@ -247,7 +247,8 @@ Finally test if a port is open or closed
 		        For ip Address : ifconfig
 		        For MAC Address : cat /sys/class/net/enp0s3/address
 		Step 4 : Reserve the IP address in a Huawei HG8245H Router, so after connected click LAN->DHCP static ip configuration , and enter ip Address and Mac Address.
-		Step 5 : Finally, to access ubuntu server according to my post you can connect as root with cmd, using the following command : `ssh root@your_server_ip`.
+		Step 5 : To access ubuntu server according to my post you can connect as root with cmd, using the following command : `ssh root@your_server_ip`.
+		Step 6 : Finally, Configure a Static IP Address in Ubuntu 18.04 Server
 
 + [**Open Class Room Install VmWare and linux**](https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux/37630-installez-linux-dans-une-machine-virtuelle)
 
@@ -256,6 +257,8 @@ Finally test if a port is open or closed
 + [**How to reset your password in Ubuntu**](https://www.psychocats.net/ubuntu/resetpassword)
 
 + [**Initial server configuration with Ubuntu 18.04**](https://www.digitalocean.com/community/tutorials/configuration-initiale-de-serveur-avec-ubuntu-18-04-fr)
+
++ [**Configure a Static IP Address in Ubuntu 18.04 Server**](https://www.youtube.com/watch?v=67tryRGCsAs)
 
 `SSH`, or secure shell, is an encrypted protocol used to administer and communicate with servers. When working with an Ubuntu server, chances are you will spend most of your time in a terminal session connected to your server through 
 SSH.

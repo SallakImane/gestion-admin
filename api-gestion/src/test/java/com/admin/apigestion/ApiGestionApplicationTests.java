@@ -27,30 +27,30 @@ public class ApiGestionApplicationTests {
 
 	}
 
-	@Test
-	public void sendSimpleMessage() throws UnirestException {
-		HttpResponse<JsonNode> request = Unirest.post("https://api.mailgun.net/v3/" + "sandboxaaf39d440e8c42d486d0fe1d99c56624.mailgun.org" + "/messages")
-				.basicAuth("api", "01bcf492bfca6f901b0e24f63f96be97-9c988ee3-56cd8e32")
-				.field("from", "RAFIKI Houssam <hssamconf@gmail.com>")
-				.field("to", "sallakimane9@gmail.com")
-				.field("subject", "hello")
-				.field("text", "testing")
-				.asJson();
+//	@Test
+//	public void sendSimpleMessage() throws UnirestException {
+//		HttpResponse<JsonNode> request = Unirest.post("https://api.mailgun.net/v3/" + "sandboxaaf39d440e8c42d486d0fe1d99c56624.mailgun.org" + "/messages")
+//				.basicAuth("api", "01bcf492bfca6f901b0e24f63f96be97-9c988ee3-56cd8e32")
+//				.field("from", "RAFIKI Houssam <hssamconf@gmail.com>")
+//				.field("to", "sallakimane9@gmail.com")
+//				.field("subject", "hello")
+//				.field("text", "testing")
+//				.asJson();
+//
+//		request.getBody();
+//	}
 
-		request.getBody();
-	}
+//	@Test
+//	public void testSendGridMailingService() {
+//		mailService.sendTestMail();
+//	}
 
-	@Test
-	public void testSendGridMailingService() {
-		mailService.sendTestMail();
-	}
-
-	@Test
-	public void addRole() {
-		Role newRole = Role.builder()
-				.name("ROLE_USER")
-				.build();
-		newRole.setStatus(1);
-		newRole =roleRepository.save(newRole);
-	}
+//	@Test
+//	public void addRole() {
+//		Role newRole = Role.builder()
+//				.name("ROLE_USER")
+//				.build();
+//		newRole.setStatus(1);
+//		newRole =roleRepository.save(newRole);
+//	}
 }

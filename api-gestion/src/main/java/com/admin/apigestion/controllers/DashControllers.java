@@ -3,15 +3,14 @@ package com.admin.apigestion.controllers;
 import com.admin.apigestion.entities.User;
 import com.admin.apigestion.services.dashboard.DashService;
 import com.admin.apigestion.utils.models.CustomResponse;
+import com.admin.apigestion.utils.models.PostUserDetails;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -47,5 +46,53 @@ public class DashControllers {
     @GetMapping(path = "/whoami")
     public ResponseEntity<?> index(Principal principal) {
         return ResponseEntity.ok().body(Map.of("email", principal.getName()));
+    }
+
+    @GetMapping(value = "/user/details")
+    public ResponseEntity<?> getUser(Principal principal) {
+        try {
+            Map<String, Object> res = new HashMap<>();
+            User user = dashService.getUserByPrincial(principal);
+            res.put("user",user);
+            return  ResponseEntity.status(HttpStatus.OK).body(res);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(
+                    CustomResponse.builder()
+                            .status(HttpStatus.ACCEPTED.value())
+                            .error(true)
+                            .errorType("danger")
+                            .message(e.getMessage())
+                            .build()
+            );
+        }
+    }
+
+    @PutMapping(value = "/save/detailsUser")
+    public ResponseEntity<?> saveUserDetails(@RequestBody PostUserDetails post, Principal principal) {
+        try {
+            log.info(post.toString());
+            dashService.saveUserDetails(post, principal);
+            return ResponseEntity.status(HttpStatus.CREATED).body(
+                    CustomResponse.builder()
+                            .status(HttpStatus.CREATED.value())
+                            .error(false)
+                            .errorType("success")
+                            .message("Your Details was updated successfully.")
+                            .build()
+            );
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(
+                    CustomResponse.builder()
+                            .status(HttpStatus.ACCEPTED.value())
+                            .error(true)
+                            .errorType("danger")
+                            .message(e.getMessage())
+                            .build()
+            );
+        }
+
     }
 }

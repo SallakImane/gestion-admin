@@ -20,6 +20,7 @@
     "@angular/platform-browser": "~8.2.7",
     "@angular/platform-browser-dynamic": "~8.2.7",
     "@angular/router": "~8.2.7",
+    "angular-archwizard": "^5.0.0",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
     "jquery.easing": "^1.4.1",

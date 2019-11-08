@@ -1,12 +1,10 @@
 package com.admin.apigestion;
 
 import com.admin.apigestion.entities.Role;
+import com.admin.apigestion.entities.Work;
 import com.admin.apigestion.repositories.RoleRepository;
+import com.admin.apigestion.repositories.WorkRepository;
 import com.admin.apigestion.services.mailing.MailService;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +15,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class ApiGestionApplicationTests {
 
-	@Autowired
-	private MailService mailService;
-	@Autowired
-	private RoleRepository roleRepository;
+    @Autowired
+    private MailService mailService;
+    @Autowired
+    private RoleRepository roleRepository;
+    @Autowired
+    private WorkRepository workRepository;
 
-	@Test
-	public void contextLoads() {
+    @Test
+    public void contextLoads() {
 
-	}
+    }
 
 //	@Test
 //	public void sendSimpleMessage() throws UnirestException {
@@ -53,4 +53,24 @@ public class ApiGestionApplicationTests {
 //		newRole.setStatus(1);
 //		newRole =roleRepository.save(newRole);
 //	}
+
+//    @Test
+//    public void addWorkValues() {
+//        Work newWork = Work.builder()
+//                .name("design")
+//                .build();
+//        newWork.setStatus(1);
+//        workRepository.save(newWork);
+//
+//        Work newWork1 = Work.builder()
+//                .name("code")
+//                .build();
+//        newWork1.setStatus(1);
+//        workRepository.save(newWork1);
+//        Work newWork2 = Work.builder()
+//                .name("deploy")
+//                .build();
+//        newWork2.setStatus(1);
+//        workRepository.save(newWork2);
+//    }
 }

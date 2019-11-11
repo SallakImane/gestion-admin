@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col">
+      <h3 class="head text-center"> What do you do ?</h3>
+    <br/>
+    <form [formGroup]="workForm" (ngSubmit)="onSubmit()">
+      <div class="form-group row justify-content-center">
+        <div class="col-4">
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="customRadioInline1" class="custom-control-input"
+                   formControlName="work" value="design">
+            <label class="custom-control-label" for="customRadioInline1">Design</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="customRadioInline2" class="custom-control-input"
+                   formControlName="work" value="code">
+            <label class="custom-control-label" for="customRadioInline2">Code</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="customRadioInline3" class="custom-control-input"
+                   formControlName="work" value="deploy">
+            <label class="custom-control-label" for="customRadioInline3">Deploy</label>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <button class="btn btn-primary btn-icon-split float-right" awNextStep>
+        <span class="text">Next</span>
+        <span class="icon">
+                  <i class="fas fa-arrow-right"></i>
+              </span>
+      </button>
+      <button class="btn btn-danger btn-icon-split float-right" awPreviousStep>
+             <span class="icon">
+              <i class="fas fa-arrow-left"></i>
+            </span>
+        <span class="text">Previous</span>
+      </button>
+    </form>
+  </div>
+</div>

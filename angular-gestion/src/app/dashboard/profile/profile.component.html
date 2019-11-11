@@ -1,0 +1,48 @@
+<div class="container-fluid">
+  <h1 class="h3 mb-4 text-gray-800">Profile</h1>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">
+            Angular-Archwizard Test
+          </h6>
+        </div>
+        <!--Begin angular-wizard-->
+        <div class="card-body">
+          <aw-wizard navBarLayout="large-empty-symbols">
+            <!--Form Personal-->
+            <app-personal awWizardStep  stepTitle="Personal" style="width: 100%">
+              <ng-template awWizardStepSymbol>
+                <i class="far fa-user"></i>
+              </ng-template>
+            </app-personal>
+
+            <!--Form Work-->
+            <app-work awWizardStep  stepTitle="Work" style="width: 100%">
+              <ng-template awWizardStepSymbol>
+                <i class="fas fa-tasks"></i>
+              </ng-template>
+            </app-work>
+
+            <!--Form Address-->
+            <app-address awWizardStep  stepTitle="Address" style="width: 100%">
+              <ng-template awWizardStepSymbol>
+                <i class="fas fa-home"></i>
+              </ng-template>
+            </app-address>
+
+            <!--Form Result-->
+            <app-result awWizardStep  stepTitle="Result"  style="width: 100%">
+              <ng-template awWizardStepSymbol>
+                <i class="fas fa-check"></i>
+              </ng-template>
+            </app-result>
+
+          </aw-wizard>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+

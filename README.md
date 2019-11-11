@@ -151,13 +151,21 @@ I should have a @Configuration class that implements WebMvcConfigurer.
 
 + [**How to send JSON Web Token (JWT Token) as header with Postman**](https://www.youtube.com/watch?v=SKswJH7_plQ)
 
-## Part foor : Send header authorization with token for each request `(Create an Interceptor )`
+## Part Foor : Send header authorization with token for each request `(Create an Interceptor )` , and Using Route Guards
 
 The goal is to include the JWT which is in local storage as the `Authorization` header in any HTTP request that is sent. The first step is to create an interceptor. To do this, create an `Injectable` class which implements 
 
 `HttpInterceptor`.
 
-+ [**Angular Authentication: Using the Http Client and Http Interceptors**](https://medium.com/@ryanchenkie_40935/angular-authentication-using-the-http-client-and-http-interceptors-2f9d1540eb8)
++ [**Angular Authentication: Using the Http Client and Http Interceptors**](https://medium.com/@ryanchenkie_40935/angular-authentication-using-the-http-client-and-http-interceptors-2f9d1540eb8) .
+
+Angular’s route guards are interfaces which can tell the router whether or not it should allow navigation to a requested route. They make this decision by looking for a `true` or `false` return value from a class which implements the given guard interface. There are five different types of guards (CanActivate - CanActivateChild -CanDeactivate -CanLoad -Resolve).
+
++ [**Angular Authentication: Using Route Guards**](https://medium.com/@ryanchenkie_40935/angular-authentication-using-route-guards-bf7a4ca13ae3).
+
++ [**Redirect to Previous URL after Login with Auth Guard**](https://jasonwatmore.com/post/2016/12/08/angular-2-redirect-to-previous-url-after-login-with-auth-guards).
+
++ [**Route Guards**](https://guide-angular.wishtack.io/angular/routing/route-guards).
 
 ## Part Five : Spring Data `Jpa Audit`
 

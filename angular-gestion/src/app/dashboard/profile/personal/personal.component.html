@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col">
+    <h3 class="head text-center"> Please tell us about yourself</h3>
+    <br/>
+    <form [formGroup]="personalForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input
+              class="form-control"
+              id="firstName"
+              formControlName="firstName"
+              required="true"
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input
+              class="form-control"
+              id="lastName"
+              formControlName="lastName"
+              required="true"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="phone">Phone </label> <input
+            class="form-control"
+            id="phone"
+            formControlName="phone"
+            required="true"
+            type="text"
+          />
+
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              class="form-control"
+              id="email"
+              formControlName="email"
+              required="true"
+              type="email"
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+      <hr>
+      <button class="btn btn-primary btn-icon-split float-right" awNextStep type="submit">
+        <span class="text">Next</span>
+        <span class="icon">
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </button>
+    </form>
+  </div>
+</div>

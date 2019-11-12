@@ -42,7 +42,7 @@ public class DashService implements IDashService{
 
     @Override
     public void saveUserDetails(PostUserDetails post, Principal principal) {
-        Optional<Work> op_work = workRepository.findByName("ROLE_USER");
+        Optional<Work> op_work = workRepository.findByName(post.getWork());
         Work work = op_work.orElseGet(() -> workRepository.save(Work.builder().name(post.getWork()).build()));
         log.info("work");
         log.info(work.toString());

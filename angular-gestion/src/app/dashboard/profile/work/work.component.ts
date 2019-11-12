@@ -18,14 +18,12 @@ export class WorkComponent implements OnInit {
   ngOnInit() {
     // Get user from resolver
     this.user = this.route.snapshot.data.user.user;
+    console.log(this.user);
     this.workForm=this.formBuilder.group({
-      work:[this.user.work]
+      work: [this.user.work.name ? this.user.work.name : null],
     })
   }
   onSubmit(){
-    // if(localStorage.getItem('details_work')!== null){
-    //   localStorage.removeItem('details_work');}
-    // localStorage.setItem('details_work',JSON.stringify(this.workForm.value));
     this.profileService.setWorkType(this.workForm.value);
   }
 }

@@ -1,12 +1,15 @@
+import {Work} from "./work";
+import {Address} from "./address";
+
 export class UserModel {
   firstName :string;
   lastName :string;
   phone :string;
   email :string;
-  work :string;
+  work :Work;
   country:string;
   city:string;
   state:string;
   zipCode:string;
-  address:string;
+  address:Address;
 }

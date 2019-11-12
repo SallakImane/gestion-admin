@@ -12,7 +12,6 @@ import * as jwt_decode from 'jwt-decode';
   providedIn: 'root'
 })
 export class AuthService {
-
   baseUrl = environment.apiUrl;
   public currentUser: Observable<User>;
   private readonly currentUserSubject: BehaviorSubject<User>;

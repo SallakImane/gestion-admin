@@ -7,8 +7,11 @@ import {BehaviorSubject} from "rxjs";
 export class ProfileService {
 
   personalSubject = new BehaviorSubject<any>(null);
+  workSubject = new BehaviorSubject<any>(null);
+  addressSubject = new BehaviorSubject<any>(null);
 
   constructor() {
+
   }
 
   setPersonal(personal: any) {
@@ -18,10 +21,13 @@ export class ProfileService {
 
   setWorkType(workType: any) {
     localStorage.setItem('details_work', JSON.stringify(workType));
+    this.workSubject.next(workType);
+
   }
 
   setAddress(address: any) {
-    localStorage.setItem('details_address', JSON.stringify(address))
+    localStorage.setItem('details_address', JSON.stringify(address));
+    this.addressSubject.next(address);
   }
 
   getPersonal() {
@@ -37,7 +43,8 @@ export class ProfileService {
   }
 
   setMergedSteps() {
-    Object.assign(this.getPersonal(), this.getWorkType(), this.getAddress());
+    let mergerd = Object.assign(this.getPersonal(), this.getWorkType(), this.getAddress());
+    return mergerd
   }
 
   resetSteps() {

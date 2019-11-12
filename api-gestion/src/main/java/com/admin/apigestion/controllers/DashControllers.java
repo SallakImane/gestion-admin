@@ -54,6 +54,7 @@ public class DashControllers {
             Map<String, Object> res = new HashMap<>();
             User user = dashService.getUserByPrincial(principal);
             res.put("user",user);
+            log.info(res.toString());
             return  ResponseEntity.status(HttpStatus.OK).body(res);
         } catch (Exception e) {
             e.printStackTrace();

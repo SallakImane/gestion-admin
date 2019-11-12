@@ -19,17 +19,14 @@ export class AddressComponent implements OnInit {
     // Get user from resolver
     this.user = this.route.snapshot.data.user.user;
     this.addressForm =this.formBuilder.group({
-      country :[this.user.country],
-      city :[this.user.city],
-      state :[this.user.state],
-      zipCode :[this.user.zipCode],
-      address :[this.user.address]
+      country: [this.user.address.country ? this.user.address.country : null],
+      city: [this.user.address.city ? this.user.address.city : null],
+      state: [this.user.address.state ? this.user.address.state : null],
+      zipCode: [this.user.address.zipCode ? this.user.address.zipCode : null],
+      address: [this.user.address.address ? this.user.address.address : null],
     })
   }
   onSubmit(){
-    // if(localStorage.getItem('details_address')!== null){
-    //   localStorage.removeItem('details_address');}
-    // localStorage.setItem('details_address',JSON.stringify(this.addressForm.value))
     this.profileService.setAddress(this.addressForm.value);
   }
 }

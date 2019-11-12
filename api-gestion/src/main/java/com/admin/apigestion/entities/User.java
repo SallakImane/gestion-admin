@@ -39,13 +39,14 @@ public class User extends AbstractEntity {
     private LocalDateTime passwordChangedDate;
 
     @ManyToOne
+    @JoinColumn(name = "id_role")
     private Role role;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "id_address")
     private Address address;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "id_work")
     private Work work;
 }

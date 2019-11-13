@@ -8,7 +8,7 @@ import {AuthComponent} from './layout/auth/auth.component';
 import {DashboardComponent} from './layout/dashboard/dashboard.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ArchwizardModule } from 'angular-archwizard';
-
+import {NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { ArchwizardModule } from 'angular-archwizard';
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    ArchwizardModule
+    ArchwizardModule,
+    NgbAlertModule
   ],
 
   exports: [
@@ -32,10 +33,9 @@ import { ArchwizardModule } from 'angular-archwizard';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    ArchwizardModule
+    ArchwizardModule,
+    NgbAlertModule
   ],
-
-
 })
 export class SharedModule {
 }

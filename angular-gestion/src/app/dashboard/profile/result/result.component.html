@@ -7,72 +7,86 @@
     </p>
     <br/>
     <!--Alert error or/success-->
-    <div *ngIf="globalResponse" [class]="'alert alert-' + globalResponse.errorType">
-      <strong>
-        {{ globalResponse.error ? 'Error' : 'Success' }}
-      </strong>
-      - {{ globalResponse.message }}
+    <!--<div *ngIf="globalResponse" [class]="'alert alert-' + globalResponse.errorType">-->
+    <!--<strong>-->
+    <!--{{ globalResponse.error ? 'Error' : 'Success' }}-->
+    <!--</strong>-->
+    <!-- - {{ globalResponse.message }}-->
+    <!--</div>-->
+
+    <div *ngIf="globalResponse">
+      <p>
+        <ngb-alert [type]="globalResponse.errorType" *ngIf="!closed" (close)="closed=true">
+          <strong>
+            {{ globalResponse.error ? 'Error' : 'Success' }}
+          </strong>
+          - {{ globalResponse.message }}
+        </ngb-alert>
+      </p>
     </div>
+
+
     <div class="form-group row justify-content-center">
       <div class="col-6">
-          <div class="form-group">
-            <div class="row">
-              <label class="control-label">First Name: </label>
-              <p><strong> {{personal.firstName}} </strong></p></div>
-            <div class="row">
-              <label class="control-label">Last Name: </label>
-              <p><strong> {{personal.lastName}} </strong></p></div>
-            <div class="row">
-              <label class="control-label">Phone: </label>
-              <p><strong> {{personal.phone}} </strong></p></div>
-            <div class="row">
-              <label class="control-label">Email: </label>
-              <p><strong> {{personal.email}}</strong></p></div>
-          </div>
+        <div class="form-group">
+          <div class="row">
+            <label class="control-label">First Name: </label>
+            <p><strong> {{personal.firstName}} </strong></p></div>
+          <div class="row">
+            <label class="control-label">Last Name: </label>
+            <p><strong> {{personal.lastName}} </strong></p></div>
+          <div class="row">
+            <label class="control-label">Phone: </label>
+            <p><strong> {{personal.phone}} </strong></p></div>
+          <div class="row">
+            <label class="control-label">Email: </label>
+            <p><strong> {{personal.email}}</strong></p></div>
+        </div>
 
-          <div class="form-group">
-            <div class="row">
-              <label class="control-label">Work Type: </label>
-              <p><strong> {{work.work}} </strong></p></div>
-          </div>
+        <div class="form-group">
+          <div class="row">
+            <label class="control-label">Work Type: </label>
+            <p><strong> {{work.work}} </strong></p></div>
+        </div>
 
-          <div class="form-group">
-            <div class="row">
-              <label class="control-label">Country: </label>
-              <p><strong>{{address.country}} </strong></p></div>
-            <div class="row">
-              <label class="control-label">City: </label>
-              <p><strong> {{address.city}}</strong></p></div>
-            <div class="row">
-              <label class="control-label">State: </label>
-              <p><strong> {{address.state}} </strong></p></div>
-            <div class="row">
-              <label class="control-label">Zip Code: </label>
-              <p><strong>{{address.zipCode}}</strong></p></div>
-            <div class="row">
-              <label class="control-label">Address: </label>
-              <p><strong> {{address.address}} </strong></p></div>
-          </div>
+        <div class="form-group">
+          <div class="row">
+            <label class="control-label">Country: </label>
+            <p><strong>{{address.country}} </strong></p></div>
+          <div class="row">
+            <label class="control-label">City: </label>
+            <p><strong> {{address.city}}</strong></p></div>
+          <div class="row">
+            <label class="control-label">State: </label>
+            <p><strong> {{address.state}} </strong></p></div>
+          <div class="row">
+            <label class="control-label">Zip Code: </label>
+            <p><strong>{{address.zipCode}}</strong></p></div>
+          <div class="row">
+            <label class="control-label">Address: </label>
+            <p><strong> {{address.address}} </strong></p></div>
+        </div>
+      </div>
     </div>
-  </div>
-  <hr>
-  <button class="btn btn-success btn-icon-split float-left" type="submit" (click)="onSubmit()">
-    <span class="text">Save</span>
-  </button>
-  <button class="btn btn-warning btn-icon-split float-left" (click)="refresh()">
-    <span class="text">Refresh</span>
-    <span class="icon">
+    <hr>
+    <button class="btn btn-success btn-icon-split float-left" type="submit" (click)="onSubmit()">
+      <span class="text">Save</span>
+    </button>
+    <button class="btn btn-warning btn-icon-split float-left" (click)="refresh()">
+      <span class="text">Refresh</span>
+      <span class="icon">
               <i class="fas fa-redo"></i>
             </span>
-  </button>
+    </button>
 
-  <button type="button" class="btn btn-secondary float-right" [awGoToStep]="{ stepIndex: 0 }">Go to first step</button>
-  <button class="btn btn-danger btn-icon-split float-right" awPreviousStep>
+    <button type="button" class="btn btn-secondary float-right" [awGoToStep]="{ stepIndex: 0 }">Go to first step
+    </button>
+    <button class="btn btn-danger btn-icon-split float-right" awPreviousStep>
              <span class="icon">
               <i class="fas fa-arrow-left"></i>
             </span>
-    <span class="text">Previous</span>
-  </button>
+      <span class="text">Previous</span>
+    </button>
 
-</div>
+  </div>
 </div>

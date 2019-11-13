@@ -4,7 +4,6 @@ import {first} from "rxjs/operators";
 import {HttpErrorResponse} from "@angular/common/http";
 import {DashboardService} from "../../../_services/dashboard/dashboard.service";
 import {ProfileService} from "../profile.service";
-import {AuthService} from "../../../_services/auth/auth.service";
 
 @Component({
   selector: 'app-result',
@@ -16,7 +15,7 @@ export class ResultComponent implements OnInit {
   work: any;
   address: any;
   globalResponse: GlobalResponse = null;
-
+  closed = false;
   constructor(private dashboardService: DashboardService,
               private profileService: ProfileService) {}
 

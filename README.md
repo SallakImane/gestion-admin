@@ -293,6 +293,14 @@ SSH.
 
 + [**Introduction to localStorage and sessionStorage**](https://alligator.io/js/introduction-localstorage-sessionstorage/)
 
+##  `ng-bootstrap `
+
++ [**ng-bootstrap**](https://ng-bootstrap.github.io/#/getting-started)
+
+##  `angular-datatables `
+
++ [**angular-datatables**](http://l-lin.github.io/angular-datatables/#/getting-started)
+
 ##  `README.md `
 
 + [**Write test in the folder README.md**](https://dillinger.io)

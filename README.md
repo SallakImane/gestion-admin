@@ -301,6 +301,10 @@ SSH.
 
 + [**angular-datatables**](http://l-lin.github.io/angular-datatables/#/getting-started)
 
+##  `route-resolvers `
+
++ [**route-resolvers**]https://alligator.io/angular/route-resolvers/)
+
 ##  `README.md `
 
 + [**Write test in the folder README.md**](https://dillinger.io)

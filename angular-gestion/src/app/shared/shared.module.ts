@@ -9,6 +9,7 @@ import {DashboardComponent} from './layout/dashboard/dashboard.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ArchwizardModule } from 'angular-archwizard';
 import {NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import {DataTablesModule} from "angular-datatables";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     FormsModule,
     ArchwizardModule,
-    NgbAlertModule
+    NgbAlertModule,
+    DataTablesModule
   ],
 
   exports: [
@@ -34,7 +36,8 @@ import {NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     FormsModule,
     ArchwizardModule,
-    NgbAlertModule
+    NgbAlertModule,
+    DataTablesModule
   ],
 })
 export class SharedModule {

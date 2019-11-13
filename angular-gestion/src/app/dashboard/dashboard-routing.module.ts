@@ -5,13 +5,20 @@ import {DashboardComponent} from "../shared/layout/dashboard/dashboard.component
 import {ProfileComponent} from "./profile/profile.component";
 import {UserResolver} from "./profile/user.resolver";
 import {AuthentificationGuardService} from "../authentification/authentification-guard.service";
+import {UsersService} from "./home/users.service";
 
 const routes: Routes = [
   {
     path: '', component: DashboardComponent, children: [
       {path: '', redirectTo: 'home', pathMatch: 'full'},
-      {path: 'home', component: HomeComponent,canActivate :[AuthentificationGuardService]},
-      {path: 'profile', component: ProfileComponent, resolve: {user: UserResolver} ,canActivate :[AuthentificationGuardService]},
+      {path: 'home',
+        component: HomeComponent,
+        resolve :{users :UsersService},
+        canActivate :[AuthentificationGuardService]},
+      {path: 'profile',
+        component: ProfileComponent,
+        resolve: {user: UserResolver} ,
+        canActivate :[AuthentificationGuardService]},
     ]
   },
 ];

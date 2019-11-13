@@ -44,8 +44,6 @@ public class DashService implements IDashService{
     public void saveUserDetails(PostUserDetails post, Principal principal) {
         Optional<Work> op_work = workRepository.findByName(post.getWork());
         Work work = op_work.orElseGet(() -> workRepository.save(Work.builder().name(post.getWork()).build()));
-        log.info("work");
-        log.info(work.toString());
 
         Address address = Address.builder()
                 .country(post.getCountry())
@@ -57,8 +55,6 @@ public class DashService implements IDashService{
         address.setStatus(1);
         addressRepository.save(address);
 
-        log.info("address");
-        log.info(address.toString());
         userRepository.findByEmail(principal.getName()).ifPresent(user -> {
             user.setFirstName(post.getFirstName());
             user.setLastName(post.getLastName());

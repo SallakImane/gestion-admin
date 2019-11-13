@@ -8,6 +8,7 @@ import { AddressComponent } from './profile/address/address.component';
 import { WorkComponent } from './profile/work/work.component';
 import { ResultComponent } from './profile/result/result.component';
 import {UserResolver} from "./profile/user.resolver";
+import {UsersService} from "./home/users.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {UserResolver} from "./profile/user.resolver";
     DashboardRoutingModule
   ],
   providers : [
-    UserResolver
+    UserResolver,
+    UsersService
   ]
 })
 export class DashboardModule {

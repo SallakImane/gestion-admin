@@ -9,6 +9,7 @@ import { WorkComponent } from './profile/work/work.component';
 import { ResultComponent } from './profile/result/result.component';
 import {UserResolver} from "./profile/user.resolver";
 import {UsersService} from "./home/users.service";
+import {PasswordComponent} from "./home/password.component";
 
 @NgModule({
   declarations: [
@@ -18,11 +19,11 @@ import {UsersService} from "./home/users.service";
     AddressComponent,
     WorkComponent,
     ResultComponent,
+    PasswordComponent
   ],
   imports: [
     SharedModule,
-    DashboardRoutingModule
-  ],
+    DashboardRoutingModule],
   providers : [
     UserResolver,
     UsersService

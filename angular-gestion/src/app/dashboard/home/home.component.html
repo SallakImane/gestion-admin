@@ -1,15 +1,214 @@
-
 <div class="card-body">
   <h3 class="head text-center">You're logged in with Angular 8!!</h3>
   <h5>All registered users:</h5>
-  <button class="btn btn-success btn-icon-split float-lg-left mb-4">
+  <!-- Begin Model Add User-->
+  <ng-template #content>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add User</h4>
+      <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form [formGroup]="addUserForm" (ngSubmit)="adduser()">
+      <div class="modal-body">
+        <div *ngIf="globalResponse">
+          <p>
+            <ngb-alert [type]="globalResponse.errorType" *ngIf="!closed" (close)="closed=true">
+              <strong>
+                {{ globalResponse.error ? 'Error' : 'Success' }}
+              </strong>
+              - {{ globalResponse.message }}
+            </ngb-alert>
+          </p>
+        </div>
+        <div class="form-group row">
+          <!--Input First Name-->
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <input type="text" class="form-control form-control-user" placeholder="First Name"
+                   formControlName="firstName"
+                   [ngClass]="{'is-invalid': addUserForm.get('firstName').invalid && addUserForm.get('firstName').touched}"
+                   required>
+            <div *ngIf="addUserForm.get('firstName').invalid && addUserForm.get('firstName').touched"
+                 class="invalid-feedback">
+              <div *ngIf="addUserForm.get('firstName').errors?.required">First Name is required</div>
+            </div>
+          </div>
+          <!--Input Last Name-->
+          <div class="col-sm-6">
+            <input type="text" class="form-control form-control-user" placeholder="Last Name" formControlName="lastName"
+                   [ngClass]="{'is-invalid': addUserForm.get('lastName').invalid && addUserForm.get('lastName').touched}"
+                   required>
+            <div *ngIf="addUserForm.get('lastName').invalid && addUserForm.get('lastName').touched"
+                 class="invalid-feedback">
+              <div *ngIf="addUserForm.get('lastName').errors?.required">Last Name is required</div>
+            </div>
+          </div>
+        </div>
+        <!--Input Phone-->
+        <div class="form-group">
+          <input type="text" class="form-control form-control-user" placeholder="+212 685923721" formControlName="phone"
+                 [ngClass]="{'is-invalid': addUserForm.get('phone').invalid && addUserForm.get('phone').touched}"
+                 required>
+          <div *ngIf="addUserForm.get('phone').invalid && addUserForm.get('phone').touched" class="invalid-feedback">
+            <div *ngIf="addUserForm.get('phone').errors?.required">Phone is required</div>
+            <div *ngIf="addUserForm.get('phone').errors?.minlength">Phone must be at least 10 characters</div>
+          </div>
+        </div>
+        <!--Input Email-->
+        <div class="form-group">
+          <input type="email" class="form-control form-control-user" placeholder="Email Address" formControlName="email"
+                 [ngClass]="{'is-invalid': addUserForm.get('email').invalid && addUserForm.get('email').touched}"
+                 required>
+          <div *ngIf="addUserForm.get('email').invalid && addUserForm.get('email').touched" class="invalid-feedback">
+            <div *ngIf="addUserForm.get('email').errors?.required">Email is required</div>
+            <div *ngIf="addUserForm.get('email').errors?.email">Please enter a valid email address (ex:
+              your-email@domaine.com)
+            </div>
+          </div>
+        </div>
+        <!--Generate password -->
+        <blockquote>
+        <div class="form-group row">
+          <app-password></app-password>
+        </div>
+        </blockquote>
+        <!--Input Password-->
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <input type="password" class="form-control form-control-user"
+                   formControlName="password"
+                   [ngClass]="{'is-invalid': addUserForm.get('password').invalid && addUserForm.get('password').touched}"
+                   required>
+            <div *ngIf="addUserForm.get('password').invalid && addUserForm.get('password').touched"
+                 class="invalid-feedback">
+              <div *ngIf="addUserForm.get('password').errors?.required">Password is required</div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <input type="password" class="form-control form-control-user" placeholder="Repeat Password"
+                   formControlName="confirmPassword"
+                   [ngClass]="{'is-invalid': addUserForm.get('confirmPassword').invalid && addUserForm.get('confirmPassword').touched}"
+                   required>
+            <div *ngIf="addUserForm.get('confirmPassword').invalid && addUserForm.get('confirmPassword').touched"
+                 class="invalid-feedback">
+              <div *ngIf="addUserForm.get('confirmPassword').errors?.required">confirm Password is required</div>
+              <div *ngIf="addUserForm.get('confirmPassword').errors?.mustMatch">Passwords must match</div>
+            </div>
+          </div>
+        </div>
+
+
+        <!--Input Work -->
+        <div class="form-group row justify-content-center">
+          <div class="col">
+            <label>Work Type : </label>
+            <div class="custom-control custom-radio custom-control-inline ml-2">
+              <input type="radio" id="customRadioInline1" class="custom-control-input"
+                     formControlName="work" value="design">
+              <label class="custom-control-label" for="customRadioInline1">Design</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="customRadioInline2" class="custom-control-input"
+                     formControlName="work" value="code">
+              <label class="custom-control-label" for="customRadioInline2">Code</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="customRadioInline3" class="custom-control-input"
+                     formControlName="work" value="deploy">
+              <label class="custom-control-label" for="customRadioInline3">Deploy</label>
+            </div>
+          </div>
+        </div>
+        <!--Input Address-->
+        <div class="form-row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="country">Country</label>
+              <input
+                class="form-control"
+                id="country"
+                formControlName="country"
+                type="text"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="city">City</label>
+              <input
+                class="form-control"
+                id="city"
+                formControlName="city"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="state">State </label> <input
+              class="form-control"
+              id="state"
+              formControlName="state"
+              type="text"
+            />
+
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="zipCode">Zip</label>
+              <input
+                class="form-control"
+                id="zipCode"
+                formControlName="zipCode"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input
+                class="form-control"
+                id="address"
+                formControlName="address"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-success"
+                [disabled]="addUserForm.invalid">Save
+        </button>
+      </div>
+    </form>
+  </ng-template>
+  <!-- End Model Add User-->
+  <!--Alerte-->
+  <div *ngIf="globalResponse">
+    <p>
+      <ngb-alert [type]="globalResponse.errorType" *ngIf="!closed" (close)="closed=true">
+        <strong>
+          {{ globalResponse.error ? 'Error' : 'Success' }}
+        </strong>
+        - {{ globalResponse.message }}
+      </ngb-alert>
+    </p>
+  </div>
+  <button class="btn btn-success btn-icon-split float-lg-left mb-4" (click)="openModal(content)">
              <span class="icon">
              <i class="fas fa-user-plus"></i>
             </span>
     <span class="text">Add User</span>
   </button>
   <div class="table-responsive">
-    <table class="table"  [dtOptions]="dtOptions"
+    <table class="table" [dtOptions]="dtOptions"
            [dtTrigger]="dtTrigger" datatable>
       <caption>
         Simple Datatables that display dynamic fields
@@ -26,16 +225,17 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let user of users">
-        <td>{{user.id}}</td>
+      <tr *ngFor="let user of users ; let i = index">
+        <td>{{1+i}}</td>
         <td>{{user.firstName}}</td>
         <td>{{user.lastName}}</td>
         <td>{{user.email}}</td>
         <td>{{user.phone}}</td>
-        <td>{{user.work.name}}</td>
+        <td *ngIf="workName===''">{{user.work.name}}</td>
+        <td *ngIf="workName!==''">{{workName}}</td>
         <td>
-          <button type="button" class="btn btn-primary btn-sm mr-2 ml-2"><i class="fas fa-edit"></i></button>
-          <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+          <button type="button" class="btn btn-primary btn-sm mr-2 ml-2" ><i class="fas fa-edit"></i></button>
+          <button type="button" class="btn btn-danger btn-sm" (click)="deleteUser(user,i)"><i class="fas fa-trash-alt"></i></button>
         </td>
       </tr>
       </tbody>

@@ -14,4 +14,8 @@ public interface IDashService {
 
     void saveUserDetails(PostUserDetails post, Principal principal);
 
+    void saveNewUser(PostUserDetails post) throws Exception;
+
+    void deleteUser(Long id, Principal principal) throws Exception;
+
 }

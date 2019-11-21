@@ -8,6 +8,7 @@ public class PostUserDetails {
     private String lastName;
     private String phone;
     private String email;
+    private String password;
     private String work;
     private String country;
     private String city;

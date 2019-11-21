@@ -31,4 +31,16 @@ export class DashboardService {
       this.baseUrl + "/secured/save/detailsUser", user
     )
   }
+
+  addNewUser(user :any){
+    return this.http.put<GlobalResponse>(
+      this.baseUrl + "/secured/save/newUser", user
+    )
+  }
+
+  deleteUser(id : any){
+    return this.http.delete<GlobalResponse>(
+      this.baseUrl + "/secured/delete/user/" + id
+    )
+  }
 }

@@ -72,7 +72,6 @@ public class DashControllers {
     @PutMapping(value = "/save/detailsUser")
     public ResponseEntity<?> saveUserDetails(@RequestBody PostUserDetails post, Principal principal) {
         try {
-            log.info(post.toString());
             dashService.saveUserDetails(post, principal);
             return ResponseEntity.status(HttpStatus.CREATED).body(
                     CustomResponse.builder()
@@ -80,6 +79,58 @@ public class DashControllers {
                             .error(false)
                             .errorType("success")
                             .message("Your Details was updated successfully.")
+                            .build()
+            );
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(
+                    CustomResponse.builder()
+                            .status(HttpStatus.ACCEPTED.value())
+                            .error(true)
+                            .errorType("danger")
+                            .message(e.getMessage())
+                            .build()
+            );
+        }
+
+    }
+    @PutMapping(value = "/save/newUser")
+    public ResponseEntity<?> saveNewUser(@RequestBody PostUserDetails post) {
+        try {
+            dashService.saveNewUser(post);
+            return ResponseEntity.status(HttpStatus.CREATED).body(
+                    CustomResponse.builder()
+                            .status(HttpStatus.CREATED.value())
+                            .error(false)
+                            .errorType("success")
+                            .message("Your Details was updated successfully.")
+                            .build()
+            );
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(
+                    CustomResponse.builder()
+                            .status(HttpStatus.ACCEPTED.value())
+                            .error(true)
+                            .errorType("danger")
+                            .message(e.getMessage())
+                            .build()
+            );
+        }
+
+    }
+    @DeleteMapping(value = "/delete/user/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable(value = "id") Long id ,Principal principal) {
+        try {
+            dashService.deleteUser(id,principal);
+            return ResponseEntity.status(HttpStatus.CREATED).body(
+                    CustomResponse.builder()
+                            .status(HttpStatus.CREATED.value())
+                            .error(false)
+                            .errorType("success")
+                            .message("User was deleted successfully.")
                             .build()
             );
 

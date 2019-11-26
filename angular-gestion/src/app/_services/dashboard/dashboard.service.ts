@@ -38,9 +38,9 @@ export class DashboardService {
     )
   }
 
-  deleteUser(id : any){
+  deleteUser(email : any){
     return this.http.delete<GlobalResponse>(
-      this.baseUrl + "/secured/delete/user/" + id
+      this.baseUrl + "/secured/delete/user/" + email
     )
   }
 }

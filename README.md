@@ -305,6 +305,12 @@ SSH.
 
 + [**route-resolvers**]https://alligator.io/angular/route-resolvers/)
 
+##  `Guide to MapStruct `
+
++ [**Guide to MapStruct**]https://www.baeldung.com/mapstruct)
+
++ [**MapStruct**]https://mapstruct.org/#get-started)
+
 ##  `README.md `
 
 + [**Write test in the folder README.md**](https://dillinger.io)

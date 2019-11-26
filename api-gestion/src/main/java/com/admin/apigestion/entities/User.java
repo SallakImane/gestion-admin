@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Data
@@ -16,21 +18,26 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "user")
 public class User extends AbstractEntity {
-    @Column(name="first_name" ,nullable = false)
+    @NotBlank
+    @Column(name="first_name")
     private String firstName;
 
-    @Column(name="last_name" ,nullable = false)
+    @NotBlank
+    @Column(name="last_name" )
     private String lastName;
 
-    @Column(unique = true, nullable = false)
+    @NotBlank
+    @Email
+    @Column(unique = true)
     private String email;
 
-    @Column(nullable = false)
+    @NotBlank
     @JsonIgnore
     private String password;
 
-    @Column(nullable = false)
+    @NotBlank
     private String phone;
+
     @JsonIgnore
     private String resetPasswordToken;
     @JsonIgnore

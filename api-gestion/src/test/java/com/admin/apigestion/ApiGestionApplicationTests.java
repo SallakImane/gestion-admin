@@ -55,6 +55,15 @@ public class ApiGestionApplicationTests {
 //	}
 
 //    @Test
+//    public void addRole() {
+//        Role newRole = Role.builder()
+//                .name("ROLE_ADMIN")
+//                .build();
+//        newRole.setStatus(1);
+//        roleRepository.save(newRole);
+//    }
+
+//    @Test
 //    public void addWorkValues() {
 //        Work newWork = Work.builder()
 //                .name("design")

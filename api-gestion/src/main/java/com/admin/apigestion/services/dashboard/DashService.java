@@ -125,7 +125,7 @@ public class DashService implements IDashService{
     public void deleteUser(Long id, Principal principal) throws Exception {
         User user = userRepository.findById(id).get();
        if(user !=null){
-           if(principal.getName().equals(user.getEmail())) throw new Exception(" You can't delete this user admin ! ");
+           if(principal.getName().equals(user.getEmail())) throw new Exception(" You can't delete this user ! ");
            else{
                userRepository.delete(user);
            }

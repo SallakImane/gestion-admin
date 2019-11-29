@@ -1,6 +1,7 @@
 package com.admin.apigestion.controllers;
 
 import com.admin.apigestion.entities.User;
+import com.admin.apigestion.exception.EmailAlreadyExistException;
 import com.admin.apigestion.services.dashboard.DashService;
 import com.admin.apigestion.utils.models.CustomResponse;
 import com.admin.apigestion.utils.models.PostUserDetails;
@@ -8,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
 import java.util.HashMap;
@@ -145,6 +147,46 @@ public class DashControllers {
                             .build()
             );
         }
+    }
 
+    @GetMapping(value = "/user/{id}")
+    public ResponseEntity<?> getUserByEmail(@PathVariable(value = "id") Long id) {
+        try {
+            PostUserDetails user  = dashService.getUserById(id);
+            return ResponseEntity.status(HttpStatus.OK).body(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(
+                    CustomResponse.builder()
+                            .status(HttpStatus.ACCEPTED.value())
+                            .error(true)
+                            .errorType("danger")
+                            .message(e.getMessage())
+                            .build()
+            );
+        }
+    }
+
+
+
+    @PutMapping(path = "/update/user/{id}")
+    public ResponseEntity<?> editUser(@PathVariable(value = "id") Long id , @RequestBody PostUserDetails post,Principal principal) {
+        log.info(id.toString());
+        log.info(post.toString());
+        if (post.getEmail().equals(principal.getName())){
+            throw new ResponseStatusException(HttpStatus.METHOD_NOT_ALLOWED, "Action not allowed", null);}
+        try {
+                dashService.updateUser(id,post);
+            return ResponseEntity.status(HttpStatus.CREATED).body(
+                    CustomResponse.builder()
+                            .status(HttpStatus.CREATED.value())
+                            .error(false)
+                            .errorType("success")
+                            .message("User was updated successfully.")
+                            .build()
+            );
+        } catch (EmailAlreadyExistException ex) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Email already exist", ex);
+        }
     }
 }

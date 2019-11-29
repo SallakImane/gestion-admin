@@ -6,6 +6,7 @@ export class UserModel {
   lastName :string;
   phone :string;
   email :string;
+  password :string;
   work :Work;
   country:string;
   city:string;

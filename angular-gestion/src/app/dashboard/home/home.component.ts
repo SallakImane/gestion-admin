@@ -28,10 +28,12 @@ export class HomeComponent implements OnInit {
   users = [];
   user :UserModel;
   addUserForm : FormGroup;
+  EditUserForm : FormGroup;
   globalResponse: GlobalResponse = null;
   @ViewChild(DataTableDirective, {static: false})
   dtElement: DataTableDirective;
   workName : string ='';
+  indexUser :number =null;
   constructor(private dashboardService: DashboardService,private formBuilder :FormBuilder,
               private route: ActivatedRoute,config: NgbModalConfig,
               private modalService: NgbModal,private modalRef: NgbActiveModal) {
@@ -61,14 +63,55 @@ export class HomeComponent implements OnInit {
       address: [''],
     },{
       validators :MustMatch('password','confirmPassword')
-    })
+    });
+
+    this.EditUserForm =this.formBuilder.group({
+      firstName :['',Validators.required],
+      lastName :['',Validators.required],
+      email :['',[Validators.required,Validators.email]],
+      oldPassword :[''],
+      password :[''],
+      confirmPassword :[''],
+      phone :['',[Validators.required,Validators.minLength(10)]],
+      work: [''],
+      country: [''],
+      city: [''],
+      state: [''],
+      zipCode: [''],
+      address: [''],
+    },{
+      validators :MustMatch('password','confirmPassword')
+    });
+    this.setPasswordValidators();
   }
   openModal(content) {
     this.modalRef = this.modalService.open(content);
   }
-  closeModal() {
+  closeModalAdd() {
    this.addUserForm.reset();
     this.modalRef.close();
+  }
+  closeModalEdit() {
+    this.EditUserForm.reset();
+    this.modalRef.close();
+  }
+  openEditModal(id,content){
+    this.indexUser =id;
+    this.modalRef = this.modalService.open(content);
+    this.dashboardService.getUserByEmail(id)
+      .pipe(first())
+      .subscribe(data =>{
+        this.EditUserForm.get('firstName').setValue(data.firstName);
+        this.EditUserForm.get('lastName').setValue(data.lastName);
+        this.EditUserForm.get('phone').setValue(data.phone);
+        this.EditUserForm.get('email').setValue(data.email);
+        this.EditUserForm.get('work').setValue(data.work);
+        this.EditUserForm.get('country').setValue(data.country);
+        this.EditUserForm.get('city').setValue(data.city);
+        this.EditUserForm.get('state').setValue(data.state);
+        this.EditUserForm.get('zipCode').setValue(data.zipCode);
+        this.EditUserForm.get('address').setValue(data.address)
+      });
   }
   adduser() {
     this.dashboardService.addNewUser(this.addUserForm.value)
@@ -81,7 +124,7 @@ export class HomeComponent implements OnInit {
             this.users.push(this.addUserForm.value);
             this.globalResponse = new GlobalResponse();
             this.globalResponse = res;
-            this.closeModal();
+            this.closeModalAdd();
           }
         },
         (error: HttpErrorResponse) => {
@@ -112,6 +155,39 @@ export class HomeComponent implements OnInit {
           this.globalResponse.errorType = "danger";
         }
       );
+  }
+  setPasswordValidators() {
+    const oldPasswordControl = this.EditUserForm.get('oldPassword');
+    const passwordControl = this.EditUserForm.get('password');
+    const comfirmPasswordControl = this.EditUserForm.get('confirmPassword');
+    /*le Cas ou old Password not null */
+    oldPasswordControl.valueChanges
+      .subscribe(oldPassword => {
+        if (oldPassword !== '') {
+          passwordControl.setValidators([Validators.required]);
+          comfirmPasswordControl.setValidators([Validators.required]);
+        }
+        passwordControl.updateValueAndValidity();
+        comfirmPasswordControl.updateValueAndValidity();
+      });
+  }
+  editUser(){
+    this.dashboardService.updateUser(this.EditUserForm.value, this.indexUser)
+      .subscribe((res :GlobalResponse)=>{
+          this.globalResponse = new GlobalResponse();
+          this.globalResponse = res;
+          this.closeModalEdit();
+        },
+        (error :GlobalResponse)=>{
+          if (error.status === 409){
+            console.log(error.message);
+            this.EditUserForm.get('email').setErrors({'incorrectEmail': true});
+          } if (error.status === 400) {
+            console.log(error.message);
+            this.EditUserForm.get('oldPassword').setErrors({'incorrectPassword': true});
+          }
+        }
+      )
   }
   ngAfterViewInit(): void {
     this.dtTrigger.next();

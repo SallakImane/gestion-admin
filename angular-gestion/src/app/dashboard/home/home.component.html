@@ -2,10 +2,11 @@
   <h3 class="head text-center">You're logged in with Angular 8!!</h3>
   <h5>All registered users:</h5>
   <!-- Begin Model Add User-->
-  <ng-template #content>
+  <!--Model Form Add User-->
+  <ng-template #contentAdd>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Add User</h4>
-      <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+      <h4 class="modal-title">Add User</h4>
+      <button type="button" class="close" aria-label="Close" (click)="closeModalAdd()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -189,6 +190,194 @@
       </div>
     </form>
   </ng-template>
+  <!--Model Form Edit User-->
+  <ng-template #contentEdit>
+    <div class="modal-header">
+      <h4 class="modal-title">Edit User</h4>
+      <button type="button" class="close" aria-label="Close" (click)="closeModalEdit()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form [formGroup]="EditUserForm" (ngSubmit)="editUser()">
+      <div class="modal-body">
+        <!--<div *ngIf="globalResponse">-->
+          <!--<p>-->
+            <!--<ngb-alert [type]="globalResponse.errorType" *ngIf="!closed" (close)="closed=true">-->
+              <!--<strong>-->
+                <!--{{ globalResponse.error ? 'Error' : 'Success' }}-->
+              <!--</strong>-->
+              <!-- - {{ globalResponse.message }}-->
+            <!--</ngb-alert>-->
+          <!--</p>-->
+        <!--</div>-->
+        <div class="form-group row">
+          <!--Input First Name-->
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <input type="text" class="form-control form-control-user" placeholder="First Name"
+                   formControlName="firstName"
+                   [ngClass]="{'is-invalid': addUserForm.get('firstName').invalid && addUserForm.get('firstName').touched}"
+                   required>
+            <div *ngIf="EditUserForm.get('firstName').invalid && EditUserForm.get('firstName').touched"
+                 class="invalid-feedback">
+              <div *ngIf="EditUserForm.get('firstName').errors?.required">First Name is required</div>
+            </div>
+          </div>
+          <!--Input Last Name-->
+          <div class="col-sm-6">
+            <input type="text" class="form-control form-control-user" placeholder="Last Name" formControlName="lastName"
+                   [ngClass]="{'is-invalid': EditUserForm.get('lastName').invalid && EditUserForm.get('lastName').touched}"
+                   required>
+            <div *ngIf="EditUserForm.get('lastName').invalid && EditUserForm.get('lastName').touched"
+                 class="invalid-feedback">
+              <div *ngIf="EditUserForm.get('lastName').errors?.required">Last Name is required</div>
+            </div>
+          </div>
+        </div>
+        <!--Input Phone-->
+        <div class="form-group">
+          <input type="text" class="form-control form-control-user" placeholder="+212 685923721" formControlName="phone"
+                 [ngClass]="{'is-invalid': EditUserForm.get('phone').invalid && EditUserForm.get('phone').touched}"
+                 required>
+          <div *ngIf="EditUserForm.get('phone').invalid && EditUserForm.get('phone').touched" class="invalid-feedback">
+            <div *ngIf="EditUserForm.get('phone').errors?.required">Phone is required</div>
+            <div *ngIf="EditUserForm.get('phone').errors?.minlength">Phone must be at least 10 characters</div>
+          </div>
+        </div>
+        <!--Input Email-->
+        <div class="form-group">
+          <input type="email" class="form-control form-control-user" placeholder="Email Address" formControlName="email"
+                 [ngClass]="{'is-invalid': EditUserForm.get('email').invalid && EditUserForm.get('email').touched}"
+                 required>
+          <div *ngIf="EditUserForm.get('email').invalid && addUserForm.get('email').touched" class="invalid-feedback">
+            <div *ngIf="EditUserForm.get('email').errors?.required">Email is required</div>
+            <div *ngIf="EditUserForm.get('email').errors?.incorrectEmail">Email address already exist</div>
+            <div *ngIf="EditUserForm.get('email').errors?.email">Please enter a valid email address (ex:
+              your-email@domaine.com)
+            </div>
+          </div>
+        </div>
+        <!--Generate password -->
+        <blockquote>
+          <div class="form-group row">
+            <app-password></app-password>
+          </div>
+        </blockquote>
+        <!--Input Password-->
+        <div class="form-group">
+          <input type="password" class="form-control form-control-user" placeholder="Current Password" formControlName="oldPassword"
+                 [isDisabled]="EditUserForm.get('oldPassword').value== ''"
+                 [ngClass]="{'is-invalid':EditUserForm.get('oldPassword').invalid && EditUserForm.get('oldPassword').touched}">
+          <div *ngIf="EditUserForm.get('oldPassword').invalid && EditUserForm.get('oldPassword').touched" class="invalid-feedback">
+            <div *ngIf="EditUserForm.get('oldPassword').errors?.required">Current Password is required</div>
+            <div *ngIf="EditUserForm.get('oldPassword').errors?.incorrectPassword">It's not the same current password</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <input type="password" class="form-control form-control-user" placeholder="New Password"
+                   formControlName="password"
+                   [ngClass]="{'is-invalid':EditUserForm.get('password').invalid && EditUserForm.get('password').touched}">
+            <div *ngIf="EditUserForm.get('password').invalid && EditUserForm.get('password').touched"
+                 class="invalid-feedback">
+              <div *ngIf="EditUserForm.get('password').errors?.required">New Password is required</div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <input type="password" class="form-control form-control-user" placeholder="Repeat Password"
+                   formControlName="confirmPassword"
+                   [ngClass]="{'is-invalid':EditUserForm.get('confirmPassword').invalid && EditUserForm.get('confirmPassword').touched}">
+            <div *ngIf="EditUserForm.get('confirmPassword').invalid && EditUserForm.get('confirmPassword').touched"
+                 class="invalid-feedback">
+              <div *ngIf="EditUserForm.get('confirmPassword').errors?.required">confirm Password is required</div>
+              <div *ngIf="EditUserForm.get('confirmPassword').errors?.mustMatch">Passwords must match</div>
+            </div>
+          </div>
+        </div>
+        <!--Input Work -->
+        <div class="form-group row justify-content-center">
+          <div class="col">
+            <label>Work Type : </label>
+            <div class="custom-control custom-radio custom-control-inline ml-2">
+              <input type="radio" id="customRadioInline4" class="custom-control-input"
+                     formControlName="work" value="design">
+              <label class="custom-control-label" for="customRadioInline4">Design</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="customRadioInline5" class="custom-control-input"
+                     formControlName="work" value="code">
+              <label class="custom-control-label" for="customRadioInline5">Code</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="customRadioInline6" class="custom-control-input"
+                     formControlName="work" value="deploy">
+              <label class="custom-control-label" for="customRadioInline6">Deploy</label>
+            </div>
+          </div>
+        </div>
+        <!--Input Address-->
+        <div class="form-row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Country</label>
+              <input
+                class="form-control"
+                formControlName="country"
+                type="text"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label >City</label>
+              <input
+                class="form-control"
+                formControlName="city"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>State </label> <input
+              class="form-control"
+              formControlName="state"
+              type="text"
+            />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Zip</label>
+              <input
+                class="form-control"
+                formControlName="zipCode"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <div class="form-group">
+              <label>Address</label>
+              <input
+                class="form-control"
+                formControlName="address"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-success"
+                [disabled]="EditUserForm.invalid">Save
+        </button>
+      </div>
+    </form>
+  </ng-template>
   <!-- End Model Add User-->
   <!--Alerte-->
   <div *ngIf="globalResponse">
@@ -201,7 +390,7 @@
       </ngb-alert>
     </p>
   </div>
-  <button class="btn btn-success btn-icon-split float-lg-left mb-4" (click)="openModal(content)">
+  <button class="btn btn-success btn-icon-split float-lg-left mb-4" (click)="openModal(contentAdd)">
              <span class="icon">
              <i class="fas fa-user-plus"></i>
             </span>
@@ -234,7 +423,7 @@
         <td *ngIf="workName===''">{{user.work.name}}</td>
         <td *ngIf="workName!==''">{{workName}}</td>
         <td>
-          <button type="button" class="btn btn-primary btn-sm mr-2 ml-2" ><i class="fas fa-edit"></i></button>
+          <button type="button" class="btn btn-primary btn-sm mr-2 ml-2" (click)="openEditModal(user.id,contentEdit)"><i class="fas fa-edit"></i></button>
           <button type="button" class="btn btn-danger btn-sm" (click)="deleteUser(user,i)"><i class="fas fa-trash-alt"></i></button>
         </td>
       </tr>

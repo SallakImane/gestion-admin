@@ -248,7 +248,7 @@
           <input type="email" class="form-control form-control-user" placeholder="Email Address" formControlName="email"
                  [ngClass]="{'is-invalid': EditUserForm.get('email').invalid && EditUserForm.get('email').touched}"
                  required>
-          <div *ngIf="EditUserForm.get('email').invalid && addUserForm.get('email').touched" class="invalid-feedback">
+          <div *ngIf="EditUserForm.get('email').invalid && EditUserForm.get('email').touched" class="invalid-feedback">
             <div *ngIf="EditUserForm.get('email').errors?.required">Email is required</div>
             <div *ngIf="EditUserForm.get('email').errors?.incorrectEmail">Email address already exist</div>
             <div *ngIf="EditUserForm.get('email').errors?.email">Please enter a valid email address (ex:
@@ -265,7 +265,6 @@
         <!--Input Password-->
         <div class="form-group">
           <input type="password" class="form-control form-control-user" placeholder="Current Password" formControlName="oldPassword"
-                 [isDisabled]="EditUserForm.get('oldPassword').value== ''"
                  [ngClass]="{'is-invalid':EditUserForm.get('oldPassword').invalid && EditUserForm.get('oldPassword').touched}">
           <div *ngIf="EditUserForm.get('oldPassword').invalid && EditUserForm.get('oldPassword').touched" class="invalid-feedback">
             <div *ngIf="EditUserForm.get('oldPassword').errors?.required">Current Password is required</div>

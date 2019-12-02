@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit {
     },{
       validators :MustMatch('password','confirmPassword')
     });
-    this.setPasswordValidators();
+
   }
   openModal(content) {
     this.modalRef = this.modalService.open(content);
@@ -93,6 +93,10 @@ export class HomeComponent implements OnInit {
   }
   closeModalEdit() {
     this.EditUserForm.reset();
+    this.EditUserForm.get('password').clearValidators();
+    this.EditUserForm.get('confirmPassword').clearValidators();
+    this.EditUserForm.get('password').updateValueAndValidity();
+    this.EditUserForm.get('confirmPassword').updateValueAndValidity();
     this.modalRef.close();
   }
   openEditModal(id,content){
@@ -112,6 +116,7 @@ export class HomeComponent implements OnInit {
         this.EditUserForm.get('zipCode').setValue(data.zipCode);
         this.EditUserForm.get('address').setValue(data.address)
       });
+    this.setPasswordValidators();
   }
   adduser() {
     this.dashboardService.addNewUser(this.addUserForm.value)
@@ -163,7 +168,8 @@ export class HomeComponent implements OnInit {
     /*le Cas ou old Password not null */
     oldPasswordControl.valueChanges
       .subscribe(oldPassword => {
-        if (oldPassword !== '') {
+        if (oldPassword || oldPasswordControl.value!== '' ) {
+
           passwordControl.setValidators([Validators.required]);
           comfirmPasswordControl.setValidators([Validators.required]);
         }
